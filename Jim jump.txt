@@ -1,0 +1,46 @@
+import math
+import os
+import random
+import re
+import sys
+
+def num_potions(jump_height, height):
+    pot_duration = []
+    pot = 0
+    new_height = jump_height
+    for i in range(len(height)):
+        if pot_duration:
+            for a in range(len(pot_duration)):
+                pot_duration[a] -=1
+                if pot_duration[a] == 0:
+                    new_height -=1
+        
+        if height[i] <= new_height:
+            continue
+        elif height[i] > new_height:
+            pot += height[i] - new_height
+            for _ in range(height[i] - new_height):
+                pot_duration.append(2)
+            new_height += height[i] - new_height
+            
+            
+    
+    return pot
+
+
+    
+
+
+
+jump_height = int(input().strip())
+
+height_count = int(input().strip())
+
+height = []
+
+for _ in range (height_count):
+    height.append(int(input().strip()))
+    
+
+result = num_potions(jump_height, height)
+print(result)
