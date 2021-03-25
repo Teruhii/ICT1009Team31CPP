@@ -1,0 +1,2 @@
+C:\Users\Xian fu\source\repos\CplusplusGameProject\Debug\CplusplusGameProject.exe
+C:\Users\Xian fu\source\repos\CplusplusGameProject\Debug\CplusplusGameProject.pdb
