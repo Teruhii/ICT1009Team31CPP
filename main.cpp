@@ -21,7 +21,6 @@ class PlayerClass {
 			yvel = 0;
 		}
 		void update(bool playerUp, bool playerDown, bool playerRight, bool playerLeft) {
-
 			if (playerRight) {
 				playerFaceRight = true;
 				xvel = 3;
@@ -50,7 +49,6 @@ class PlayerClass {
 
 int main()
 {
-	int layer0_x, layer1_x, layer2_x, layer3_x, layer4_x;
 	// create the game window
 	RenderWindow window(sf::VideoMode(1920, 1080), "PartyRun");
 	View View(window.getDefaultView());
@@ -64,7 +62,8 @@ int main()
 	Texture spriteTexture;
 	spriteTexture.loadFromFile("images/player.png");
 	Sprite spriteObj(spriteTexture);
-	
+	//Create background texture objects from a preset texture file
+	//To create the effect of the player and various obstacles moving across the screen, multiple layers are used
 	Texture backgroundtexture1;
 	backgroundtexture1.loadFromFile("images/layer_01.png");
 	Texture backgroundtexture2;
@@ -75,7 +74,10 @@ int main()
 	backgroundtexture4.loadFromFile("images/layer_04.png");
 	Texture backgroundtexture5;
 	backgroundtexture5.loadFromFile("images/layer_05.png");
-
+	
+	//Creates 10 layer sprite objects based on the texture objects
+	//SetPosition is a function of each sprite object, used to initialize the position of the layers
+	//To create a seemless effect for the user, 2 layer objects are used and they move simultaneously across the screen
 	Sprite layer1_0(backgroundtexture1);
 	layer1_0.setPosition(0, 0);
 	Sprite layer1_1(backgroundtexture1);
@@ -100,12 +102,15 @@ int main()
 	layer5_0.setPosition(0, 0);
 	Sprite layer5_1(backgroundtexture5);
 	layer5_1.setPosition(0, 0);
-
-	int elapsedTime = 0, offset1 = 0, offset2 = 0, offset3 = 0, offset4 = 0, offset5 = 0;
-	float L1 = 0.2, L2 = 0.5, L3 = 2, L4 = 5, L5 = 10; //Individual layer offset speeds to create a parralax effect
+	
+	
+	int red = 135, green = 205, blue = 235, time = 0, a; //Initialize the sky colour and additional variables
+	int offset[5] = {0, 0, 0, 0, 0}; //Initialize layer positions
+	//Each layer will use a different offset speed to create a parallax effect
+	int L[5] = {1, 2, 5, 7, 14}; //Initialize individual layer offset speeds to create a parallax effect
+	Color color(0, 0, 0); //Initialize color object
 	
 	while (window.isOpen()) {
-		
 		Event event;
 		while (window.pollEvent(event))
 		{ 
@@ -125,29 +130,75 @@ int main()
 		
 		window.clear();
         
-		offset1--;
-		offset2--;
-		offset3--;
-		offset4--;
-		offset5--;
-        
-		layer1_0.setPosition((offset1*L1), 0);
-		layer1_1.setPosition((offset1*L1 + 1920), 0);
-		layer2_0.setPosition((offset2*L2), 0);
-		layer2_1.setPosition((offset2*L2 + 1920), 0);
-		layer3_0.setPosition((offset3*L3), 0);
-		layer3_1.setPosition((offset3*L3 + 1920), 0);
-		layer4_0.setPosition((offset4*L4), 0);
-		layer4_1.setPosition((offset4*L4 + 1920), 0);
-		layer5_0.setPosition((offset5)*L5, 0);
-		layer5_1.setPosition((offset5*L5 + 1920), 0);
+		//Align the position of the layers to create a 'moving' effect
+		layer1_0.setPosition((offset[0]*L[0]), 0);
+		layer1_1.setPosition((offset[0]*L[0] + 1920), 0);
+		layer2_0.setPosition((offset[1]*L[1]), 0);
+		layer2_1.setPosition((offset[1]*L[1] + 1920), 0);
+		layer3_0.setPosition((offset[2]*L[2]), 0);
+		layer3_1.setPosition((offset[2]*L[2] + 1920), 0);
+		layer4_0.setPosition((offset[3]*L[3]), 0);
+		layer4_1.setPosition((offset[3]*L[3] + 1920), 0);
+		layer5_0.setPosition((offset[4])*L[4], 0);
+		layer5_1.setPosition((offset[4]*L[4] + 1920), 0);
+		
+		//Color object uses 3 values (Red, Green, Blue) to determine the exact color
+		//This is adjusted in the game loop
+		if (time == 0){ //The time now is day, so we must change the sky to evening orange
+			//Slowly fade from sky blue to sunset orange
+			if (red < 253) red++; 
+			else if (green > 94) green--; 
+			else if (blue > 83) blue--;
+			else time = 1; //Successfully changed the sky color to evening orange
+		}
+		else if (time == 1){ //The time now is sunset, so we must change the sky to evening
+			if (green > 44) { green--; green--; green--;}
+			else if (red > 44) red--; 
+			else if (blue < 130) blue++;
+			else time = 2; //Successfully changed the sky color to evening blue
+		}
+		else if (time == 2){ //The time now is evening, so we must change the sky to night
+			if (blue > 40) {blue--; blue--; blue--; blue--;}
+			else if (red > 4) red--;
+			else if (green > 4) green--;
+			else time = 3; //Successfully changed the sky color to night blue/black
+		}
+		else if (time == 3){ //The time now is night, so we must change the sky to morning
+			if (red < 253) red++; 
+			else if (green > 94) green--; 
+			else if (blue > 83) blue--;
+			else time = 4; //Successfully changed the sky color to morning
+		}
+		else if (time == 4){ //The time now is morning, so we change the sky to day
+			if (red > 135) {red--; red--; red--;}
+			else if (green < 205) green++; 
+			else if (blue < 235) {blue++; blue++; blue++; blue++; blue++;}
+			else time = 0; //Successfully changed the sky color to day
+		}
 
-		if (offset1*L1 == -1920) offset1 = 0;
-		if (offset2*L2 == -1920) offset2 = 0;
-		if (offset3*L3 == -1920) offset3 = 0;
-		if (offset4*L4 == -1920) offset4 = 0;
-		if (offset5*L5 < -1920) offset5 = 0;
+		//Assign the red, green, blue values in the color object
+		color.r = red;
+		color.g = green;
+		color.b = blue;
 
+		//setColor(color) adjusts the color of each layer according to the time of day
+		//Not each layer's colors needs to be adjusted to the time of day
+		//Clouds are not included
+		layer1_0.setColor(color);
+		layer1_1.setColor(color);
+		layer3_0.setColor(color);
+		layer3_1.setColor(color);
+		layer5_0.setColor(color);
+		layer5_1.setColor(color);
+
+		a = 0; //Loop through once for every layer
+		while (a < 5){
+			offset[a]--; 
+			if (offset[a]*L[a] < -1920) offset[a] = 0; //End of layer reached, reset the offset to 0 and start again
+			a++;
+		}
+
+		//Draw each layer and the assets as needed
 		window.setView(View);
 		window.draw(layer1_0);
 		window.draw(layer1_1);
@@ -159,11 +210,10 @@ int main()
 		window.draw(layer4_1);
 		window.draw(layer5_0);
 		window.draw(layer5_1);
-
 		window.draw(spriteObj);
-
 		spriteObj.move(Vector2f(playerObject.xvel, playerObject.yvel));
 		window.display();
+		
 	}
 	return 0;
 }
