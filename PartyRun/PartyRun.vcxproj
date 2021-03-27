@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\BackgroundImage.cpp" />
+    <ClCompile Include="src\BackgroundManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameManager.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="header\AssetManager.h" />
     <ClInclude Include="header\BackgroundImage.h" />
+    <ClInclude Include="header\BackgroundManager.h" />
     <ClInclude Include="header\Game.h" />
     <ClInclude Include="header\GameManager.h" />
     <ClInclude Include="header\Player.h" />

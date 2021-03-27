@@ -3,7 +3,7 @@
 
 #include "Player.h"
 #include "AssetManager.h"
-#include "BackgroundImage.h"
+#include "BackgroundManager.h"
 
 class GameManager;
 
@@ -16,21 +16,21 @@ private:
 	sf::RenderWindow* window; //main render window
 	sf::Event sfmlEvent; //eventlistener for clicks/keypress etc in the game window
 	bool endGame;
+	sf::Clock gameClock;
+	float deltaTime;
 
 	//initialise the variable&window in constructor only in this class
 	void initVariables();
 	void initWindow();
 	GameManager* gm;
 	AssetManager am;
+	BackgroundManager* bgManager;
+	
 
 	/// Tempt to delete ----
 	Player* p1;
 	sf::Texture temptxt;
-	BackgroundImage* bgImage1;
-	BackgroundImage* bgImage2;
-	BackgroundImage* bgImage3;
-	BackgroundImage* bgImage4;
-	BackgroundImage* bgImage5;
+
 	// Temp to delete end --- 
 
 public:
