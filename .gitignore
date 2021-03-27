@@ -72,3 +72,14 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+PartyRun/x64/Release/PartyRun.tlog/CL.command.1.tlog
+PartyRun/x64/Release/PartyRun.tlog/CL.read.1.tlog
+PartyRun/x64/Release/PartyRun.tlog/CL.write.1.tlog
+PartyRun/x64/Release/PartyRun.tlog/link.command.1.tlog
+PartyRun/x64/Release/PartyRun.tlog/link.delete.1.tlog
+PartyRun/x64/Release/PartyRun.tlog/link.read.1.tlog
+PartyRun/x64/Release/PartyRun.tlog/link.write.1.tlog
+PartyRun/x64/Release/PartyRun.tlog/PartyRun.write.1u.tlog
+PartyRun/x64/Release/vc142.pdb
+*.tlog
+*.pdb
