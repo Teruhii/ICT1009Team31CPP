@@ -2,7 +2,10 @@
 #include "stdafx.h"
 
 #include "Player.h"
-	class GameManager;
+#include "AssetManager.h"
+#include "BackgroundImage.h"
+
+class GameManager;
 
 class Game {
 
@@ -18,8 +21,17 @@ private:
 	void initVariables();
 	void initWindow();
 	GameManager* gm;
-	Player* p1;
+	AssetManager am;
 
+	/// Tempt to delete ----
+	Player* p1;
+	sf::Texture temptxt;
+	BackgroundImage* bgImage1;
+	BackgroundImage* bgImage2;
+	BackgroundImage* bgImage3;
+	BackgroundImage* bgImage4;
+	BackgroundImage* bgImage5;
+	// Temp to delete end --- 
 
 public:
 	//constructor & destructor for game class
