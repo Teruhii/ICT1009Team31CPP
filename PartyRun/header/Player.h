@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "Body.h"
 
 
 	enum class PlayerState {
@@ -21,13 +22,14 @@
 	public:
 		Player();
 		~Player();
+		void update(float deltaTime);
 		void render(sf::RenderTarget& target);
 		void processInput();
 		void handleInput();
 		void updateAnimations();
 		void move(const float dir_x, const float dir_y);
 		void jump(const float dir_x, const float dir_y);
-		void updatePhysics();
+		void updatePhysics(float deltatime);
 		//static PlayerState playerState; 
 
 	private:
@@ -53,6 +55,8 @@
 		float gravity;
 		float maxVelocityY;
 		float jumpForce;
+		Body* pBody;
+		sf::RectangleShape* pBodyShape;
 		void initPhysics();
 		// --- Physics End --- 
 	};

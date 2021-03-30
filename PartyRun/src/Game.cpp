@@ -3,6 +3,7 @@
 #include "../header/BackgroundImage.h"
 
 
+
 	//Variable Init implementations
 	void Game::initVariables() {
 		this->endGame = false;
@@ -23,6 +24,7 @@
 		// Testing classes
 		this->p1 = new Player();
 		this->bgManager = new BackgroundManager();
+		this->am = new AssetManager();
 		//this->gm = gm;
 	}
 
@@ -52,9 +54,9 @@
 
 		// Testing update area -----
 		this->p1->handleInput();
-		this->p1->processInput();
+		this->p1->update(deltaTime);
 
-		this->bgManager->update(1.f/60.f);
+		this->bgManager->update(deltaTime);
 		// Testing update area end -----
 	}
 
@@ -67,7 +69,7 @@
 		//render stuff here
 
 		// Render Testing stuff ---
-
+		this->bgManager->render(*(this->window));
 		this->p1->render(*(this->window));
 		// Render Testing stuff end ---
 		/*sf::Sprite spritetest;
@@ -76,7 +78,7 @@
 		spritetest.setTexture(temptxt);
 		this->window->draw(spritetest);*/
 
-		this->bgManager->render(*(this->window));
+
 		//display after rendering stuff
 		this->window->display();
 	}

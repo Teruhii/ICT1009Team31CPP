@@ -23,7 +23,7 @@ private:
 	void initVariables();
 	void initWindow();
 	GameManager* gm;
-	AssetManager am;
+	AssetManager* am;
 	BackgroundManager* bgManager;
 	
 

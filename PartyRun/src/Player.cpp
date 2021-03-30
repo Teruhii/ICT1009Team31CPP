@@ -16,20 +16,26 @@
 	{
 	}
 
+	void Player::update(float deltaTime)
+	{
+		this->processInput();
+		this->updatePhysics(deltaTime);
+	}
+
 	void Player::render(sf::RenderTarget& target)
 	{
 		// FSM.playAnimation();
 		// OR
 		// weapon.playAnimation();
-		this->sprite.move(this->velocity); // Update sprite position
+		this->sprite.setPosition(this->pBody->getPosition());// move(this->velocity); // Update sprite position
 		this->updateAnimations();
 		target.draw(this->sprite);
 	}
 
 	void Player::processInput()
 	{
-		// Includes physics processing based on inputs
-		this->updatePhysics();
+		// Any inputs that need to be processed should be here
+		
 	}
 
 	void Player::handleInput()
@@ -39,24 +45,27 @@
 
 		// Process variable changes to update player physics
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
-			this->move(-1.f, 0.f);
+			//this->move(-1.f, 0.f);
+			this->pBody->addForce(sf::Vector2f(-1000.f, 0.f));
 			this->state = PlayerState::RUNNING_LEFT;
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
-			this->move(1.f, 0.f);
+			//this->move(1.f, 0.f);
+			this->pBody->addForce(sf::Vector2f(1000.f, 0.f));
 			this->state = PlayerState::RUNNING_RIGHT;
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
 			if (this->state != PlayerState::JUMPING) {
-				this->jump(0.f, -1.f);
+				//this->jump(0.f, -1.f);
+				this->pBody->addForce(0.f, -1000.f);
 				this->state = PlayerState::JUMPING;
 			}
 
 
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
-			this->move(0.f, 1.f);
+			//this->move(0.f, 1.f);
 			this->state = PlayerState::FALLING;
 
 		}
@@ -163,7 +172,7 @@
 		}*/
 	}
 
-	void Player::updatePhysics()
+	void Player::updatePhysics(float deltaTime)
 	{//remove for now
 	 /*
 		// Gravity application
@@ -172,7 +181,7 @@
 		if (std::abs(this->velocity.y) > this->maxVelocityY) {
 			this->velocity.y = this->maxVelocityY * ((this->velocity.y < 0.f) ? -1.f : 1.f);
 		}*/
-
+		/*
 		// Decelerate
 		this->velocity *= this->drag;
 
@@ -182,7 +191,10 @@
 		}
 		if (std::abs(this->velocity.y) < this->minVelocity) { // For up and down
 			this->velocity.y = 0;
-		}
+		}*/
+
+
+		this->pBody->update(deltaTime);
 
 	}
 
@@ -209,11 +221,22 @@
 
 	void Player::initPhysics()
 	{
-		this->maxVelocity = 10.f;
+		// Set player physics variables
+		this->maxVelocity = 800.f;
 		this->acceleration = 3.f;
 		this->drag = .93f;
 		this->minVelocity = 1.f; // threshold to stop moving
-		this->gravity = 4.f;
-		this->maxVelocityY = 15.f; // Terminal Velocity
+		this->gravity = 40.f;
+		this->maxVelocityY = 800.f; // Terminal Velocity
 		this->jumpForce = 5.f;
+
+		// Set player body for physics
+		this->pBodyShape = new sf::RectangleShape();
+		this->pBodyShape->setSize(sf::Vector2f(100.0f, 150.0f));
+		this->pBodyShape->setOrigin(this->pBodyShape->getSize() / 2.0f);
+
+
+		// Create player body for physics
+		this->pBody = new Body(*(this->pBodyShape), true, 1.f, sf::Vector2f(0.f, 0.f), this->gravity, true, 
+			this->maxVelocityY, this->drag, this->minVelocity, this->maxVelocity);
 	}
