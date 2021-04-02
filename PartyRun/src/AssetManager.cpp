@@ -1,11 +1,12 @@
 #include "../header/AssetManager.h"
+#include "../header/stdafx.h"
 
 
 void AssetManager::LoadTexture(std::string name, std::string fileName){
-	sf::Texture tex;
+	sf::Texture texture;
 	
-	if (tex.loadFromFile(fileName)){
-		this->_textures[name] = tex;
+	if (texture.loadFromFile(fileName)){
+		this->_textures[name] = texture;
 	}
 }
 
@@ -15,10 +16,10 @@ sf::Texture &AssetManager::GetTexture(std::string name){
 
 
 void AssetManager::LoadFont(std::string name, std::string fileName){
-	sf::Font tex;
+	sf::Font font;
 	
-	if (tex.loadFromFile(fileName)){
-		this->_fonts[name] = tex;
+	if (font.loadFromFile(fileName)){
+		this->_fonts[name] = font;
 	}
 }
 sf::Font &AssetManager::GetFont(std::string name){

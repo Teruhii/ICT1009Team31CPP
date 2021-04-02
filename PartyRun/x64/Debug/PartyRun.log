@@ -1,6 +1,2 @@
-﻿  Game.cpp
-  GameManager.cpp
-  Main.cpp
-  Player.cpp
-  Generating Code...
-  PartyRun.vcxproj -> D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\x64\Debug\PartyRun.exe
+﻿  MainScreen.cpp
+  PartyRun.vcxproj -> D:\SiTProjects\ICT1009Team31CPP\PartyRun\x64\Debug\PartyRun.exe

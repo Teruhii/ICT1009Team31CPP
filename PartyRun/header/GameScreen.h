@@ -1,6 +1,10 @@
+
+//moved to PlayScreen class
+
+/*
+
 #pragma once
 #include "stdafx.h"
-
 #include "Player.h"
 #include "AssetManager.h"
 #include "BackgroundManager.h"
@@ -51,3 +55,5 @@ public:
 	void changeScoreScreen();
 
 };
+
+*/

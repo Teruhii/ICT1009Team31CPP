@@ -1,4 +1,8 @@
-#include "../header/Game.h"
+
+
+/** MOVED TO PLAYSCREEN CLASS
+
+#include "../header/GameScreen.h"
 #include "../header/GameManager.h"
 #include "../header/BackgroundImage.h"
 
@@ -68,15 +72,17 @@
 
 		// Render Testing stuff ---
 
-		this->p1->render(*(this->window));
+		
 		// Render Testing stuff end ---
 		/*sf::Sprite spritetest;
 		sf::Texture temptxt;
 		bool tempbool = temptxt.loadFromFile("Textures/layer_03.png");
 		spritetest.setTexture(temptxt);
-		this->window->draw(spritetest);*/
+		this->window->draw(spritetest);*
 
 		this->bgManager->render(*(this->window));
+
+		this->p1->render(*(this->window));
 		//display after rendering stuff
 		this->window->display();
 	}
@@ -101,11 +107,11 @@
 
 	void Game::changeScoreScreen() {
 		/*Game scoreScreen = new ScoreScreen(this->gm)
-			this->gm.setGameTo(scoreScreen);*/
+			this->gm.setGameTo(scoreScreen);*
 	}
 
 
-
+*/
 
 
 

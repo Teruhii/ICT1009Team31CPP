@@ -209,11 +209,13 @@
 
 	void Player::initPhysics()
 	{
-		this->maxVelocity = 10.f;
-		this->acceleration = 3.f;
-		this->drag = .93f;
-		this->minVelocity = 1.f; // threshold to stop moving
-		this->gravity = 4.f;
-		this->maxVelocityY = 15.f; // Terminal Velocity
-		this->jumpForce = 5.f;
+
+		//values were changed from original.
+		this->maxVelocity = 0.3f;
+		this->acceleration = 0.2f;
+		this->drag = 0.75f;
+		this->minVelocity = 0.08f; // threshold to stop moving
+		this->gravity = 0.15f;
+		this->maxVelocityY = 0.3f; // Terminal Velocity
+		this->jumpForce = 0.17f;
 	}
