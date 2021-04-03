@@ -1,2 +1,2 @@
-PlatformToolSet=v142:VCToolArchitecture=Native32Bit:VCToolsVersion=14.28.29910:TargetPlatformVersion=10.0.19041.0:
-Release|x64|D:\SiTProjects\ICT1009Team31CPP\PartyRun\|
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v142:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0
+Release|x64|D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\|
