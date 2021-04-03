@@ -1,6 +1,5 @@
 #include "../header/stdafx.h"
 #include "../header/GameManager.h"
-#include "../header/GameScreen.h"
 
 int main()
 {
