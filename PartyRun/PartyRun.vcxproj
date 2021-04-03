@@ -87,10 +87,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\SiTProjects\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\SiTProjects\ICT1009Team31CPP\PartyRun\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -99,13 +102,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SiTProjects\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-main-d.lib;sfml-main.lib;sfml-audio-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\SiTProjects\ICT1009Team31CPP\PartyRun\SFML-2.5.1\lib;D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -116,13 +119,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SiTProjects\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\SiTProjects\ICT1009Team31CPP\PartyRun\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-network.lib;sfml-main.lib;sfml-system.libkernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,33 +138,43 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SiTProjects\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>;sfml-main.lib;sfml-audio.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\SiTProjects\ICT1009Team31CPP\PartyRun\SFML-2.5.1\lib;D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-network.lib;sfml-main.lib;sfml-system.lib;sfml-main.lib;sfml-audio.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\BackgroundImage.cpp" />
     <ClCompile Include="src\BackgroundManager.cpp" />
-    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\EndScreen.cpp" />
+    <ClCompile Include="src\GameScreen.cpp" />
     <ClCompile Include="src\GameManager.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\MainScreen.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\PlayScreen.cpp" />
+    <ClCompile Include="src\StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\AssetManager.h" />
     <ClInclude Include="header\BackgroundImage.h" />
     <ClInclude Include="header\BackgroundManager.h" />
-    <ClInclude Include="header\Game.h" />
+    <ClInclude Include="header\Definition.h" />
+    <ClInclude Include="header\EndScreen.h" />
+    <ClInclude Include="header\GameScreen.h" />
     <ClInclude Include="header\GameManager.h" />
+    <ClInclude Include="header\MainScreen.h" />
     <ClInclude Include="header\Player.h" />
+    <ClInclude Include="header\PlayScreen.h" />
+    <ClInclude Include="header\Screen.h" />
+    <ClInclude Include="header\StateMachine.h" />
     <ClInclude Include="header\stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

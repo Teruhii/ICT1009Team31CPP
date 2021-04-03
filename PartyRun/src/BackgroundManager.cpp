@@ -56,31 +56,31 @@ void BackgroundManager::initBackgroundImages()
 	// Create backgrounds for each layer
 	for (int i = 0; i < 2; i++) {
 		sf::Texture temptxt;
-		temptxt.loadFromFile("Textures/layer_01.png");
+		temptxt.loadFromFile(PLAYBG_LAY1);
 		this->bgLayer1[i] = new BackgroundImage(0 + 800 * i, 0, 800, 0, -800, 60, temptxt);
 	}
 
 	for (int i = 0; i < 2; i++) {
 		sf::Texture temptxt;
-		temptxt.loadFromFile("Textures/layer_02.png");
+		temptxt.loadFromFile(PLAYBG_LAY2);
 		this->bgLayer2[i] = new BackgroundImage(0 + 800 * i, 0, 800, 0, -800, 120, temptxt);
 	}
 
 	for (int i = 0; i < 2; i++) {
 		sf::Texture temptxt;
-		temptxt.loadFromFile("Textures/layer_03.png");
+		temptxt.loadFromFile(PLAYBG_LAY3);
 		this->bgLayer3[i] = new BackgroundImage(0 + 800 * i, 0, 800, 0, -800, 300, temptxt);
 	}
 
 	for (int i = 0; i < 2; i++) {
 		sf::Texture temptxt;
-		temptxt.loadFromFile("Textures/layer_04.png");
+		temptxt.loadFromFile(PLAYBG_LAY4);
 		this->bgLayer4[i] = new BackgroundImage(0 + 800 * i, 0, 800, 0, -800, 420, temptxt);
 	}
 
 	for (int i = 0; i < 2; i++) {
 		sf::Texture temptxt;
-		temptxt.loadFromFile("Textures/layer_05.png");
+		temptxt.loadFromFile(PLAYBG_LAY5);
 		this->bgLayer5[i] = new BackgroundImage(0 + 800 * i, 0, 800, 0, -800, 840, temptxt);
 	}
 
