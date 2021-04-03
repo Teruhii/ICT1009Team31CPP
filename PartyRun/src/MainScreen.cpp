@@ -7,7 +7,7 @@ void MainScreen::Init()
 {
 	this->_data->assets.LoadTexture("mainmenubg", MAINSCREEN_BACKGROUND_FILEPATH);
 	//temporarily setting scale here based on the image size
-	_background.setScale(800.f/1280.f, 600.f/720.f);
+	//_background.setScale(800.f/1280.f, 600.f/720.f);
 	_background.setTexture(this->_data->assets.GetTexture("mainmenubg"));
 
 }

@@ -31,13 +31,10 @@
 	}
 */
 
-
-
 GameManager::GameManager(int width, int height, std::string title)
 {
 	_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
 	_data->machine.AddState(StateRef(new MainScreen(this->_data)));
-
 	this->Run();
 }
 
@@ -55,12 +52,10 @@ void GameManager::Run()
 
 		newTime = this->_data->_clock.getElapsedTime().asSeconds();
 		frameTime = newTime - currentTime;
-
 		if (frameTime > 0.25f)
 		{
 			frameTime = 0.25f;
 		}
-
 		currentTime = newTime;
 		accumulator += frameTime;
 
@@ -68,7 +63,6 @@ void GameManager::Run()
 		{
 			this->_data->machine.GetActiveState()->HandleInput();
 			this->_data->machine.GetActiveState()->Update(dt);
-
 			accumulator -= dt;
 		}
 

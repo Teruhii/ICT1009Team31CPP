@@ -41,7 +41,7 @@ void PlayScreen::Update(float dt)
 {
 	//this function updates the processes inside this screen.
 
-	this->bgManager->update(1.f / 60.f);
+	this->bgManager->update(dt);
 	this->p1->handleInput();
 	this->p1->processInput();
 
@@ -50,7 +50,6 @@ void PlayScreen::Update(float dt)
 void PlayScreen::Draw(float dt)
 {
 	//this will draw whatever that is being put into this screen
-
 	this->_data->window.clear(sf::Color::Red);
 
 	this->bgManager->render(this->_data->window);

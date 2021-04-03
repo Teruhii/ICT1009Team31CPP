@@ -2,7 +2,7 @@
 
 
 //main screen resources
-#define MAINSCREEN_BACKGROUND_FILEPATH "Textures/mainmenu.jpg"
+#define MAINSCREEN_BACKGROUND_FILEPATH "Textures/Splash.png"
 
 //play screen resources
 #define PLAYBG_LAY1 "Textures/layer_01.png"
