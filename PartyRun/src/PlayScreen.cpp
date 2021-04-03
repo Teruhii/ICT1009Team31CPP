@@ -40,10 +40,10 @@ void PlayScreen::HandleInput()
 void PlayScreen::Update(float dt)
 {
 	//this function updates the processes inside this screen.
-
-	this->bgManager->update(1.f / 60.f);
 	this->p1->handleInput();
 	this->p1->processInput();
+	this->bgManager->update(dt);
+
 
 }
 
