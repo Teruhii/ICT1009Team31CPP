@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "Body.h"
 
 
 	enum class PlayerState {
@@ -27,7 +28,9 @@
 		void updateAnimations();
 		void move(const float dir_x, const float dir_y);
 		void jump(const float dir_x, const float dir_y);
-		void updatePhysics();
+		void update(float);
+		void updatePhysics(float);
+		Body getBody();
 		//static PlayerState playerState; 
 
 	private:
@@ -45,6 +48,8 @@
 		// --- Animation Clips end ---
 
 		// --- Physics Start ---
+		sf::RectangleShape* pBodyShape;
+		Body* pBody;
 		sf::Vector2f velocity;
 		float acceleration;
 		float drag;

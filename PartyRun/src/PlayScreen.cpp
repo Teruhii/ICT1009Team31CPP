@@ -33,6 +33,8 @@ void PlayScreen::HandleInput()
 				this->_data->machine.AddState(StateRef(new EndScreen(_data)), true);
 			}
 		}
+
+		this->p1->handleInput();
 	}
 
 }
@@ -40,8 +42,7 @@ void PlayScreen::HandleInput()
 void PlayScreen::Update(float dt)
 {
 	//this function updates the processes inside this screen.
-	this->p1->handleInput();
-	this->p1->processInput();
+	this->p1->update(dt);
 	this->bgManager->update(dt);
 
 
