@@ -24,7 +24,7 @@
 		~Player();
 		void render(sf::RenderTarget& target);
 		void processInput();
-		void handleInput();
+		void handleInput(int);
 		void updateAnimations();
 		void move(const float dir_x, const float dir_y);
 		void jump(const float dir_x, const float dir_y);
@@ -34,6 +34,7 @@
 		//static PlayerState playerState; 
 
 	private:
+		int x;
 		PlayerState state;
 		// FSM
 		bool canJump;

@@ -5,7 +5,7 @@ int main()
 {
 
 
-    GameManager runGame(800, 600, "PartyRun");
+    GameManager runGame(1920, 1080, "PartyRun");
 
     //End application
 
