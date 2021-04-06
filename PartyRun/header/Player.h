@@ -20,21 +20,33 @@
 	{
 
 	public:
+		// --- Constructors ---
 		Player();
 		~Player();
 		void render(sf::RenderTarget& target);
+
+		// --- Interactions ---
+		void resetJump();
+
+		// --- Inputs ---
 		void processInput();
 		void handleInput();
+
+		// --- Animations ---
 		void updateAnimations();
-		void move(const float dir_x, const float dir_y);
+
+		// --- Physics ---
+		void move(const float, const float, float);
 		void jump(const float dir_x, const float dir_y);
 		void update(float);
 		void updatePhysics(float);
-		Body getBody();
+		Body& getBody();
+		bool checkCollision(Collider, float);
+		bool checkCollision(Body& otherBod, float push);
 		//static PlayerState playerState; 
 
 	private:
-		PlayerState state;
+		PlayerState states[2];
 		// FSM
 		bool canJump;
 		// --- ANIMATION CLIPS ---
@@ -51,7 +63,9 @@
 		sf::RectangleShape* pBodyShape;
 		Body* pBody;
 		sf::Vector2f velocity;
-		float acceleration;
+		sf::Vector2f* initialPosition;
+		float horizontalMovementSpeed;
+		float verticalMovementSpeed;
 		float drag;
 		float maxVelocity;
 		float minVelocity;
