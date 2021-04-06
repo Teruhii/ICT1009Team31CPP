@@ -27,6 +27,7 @@
 
 		// --- Interactions ---
 		void resetJump();
+		bool canFallThrough();
 
 		// --- Inputs ---
 		void processInput();
@@ -49,6 +50,7 @@
 		PlayerState states[2];
 		// FSM
 		bool canJump;
+		bool canFall;
 		// --- ANIMATION CLIPS ---
 		sf::Sprite sprite;
 		sf::Texture textureSheet;

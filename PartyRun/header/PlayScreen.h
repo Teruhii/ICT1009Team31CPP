@@ -9,6 +9,7 @@
 #include "../header/Player.h"
 #include "../header/GameManager.h"
 #include "../header/Platform.h"
+#include "../header/PlatformManager.h"
 
 class PlayScreen : public Screen {
 private:
@@ -18,6 +19,7 @@ private:
 	Player* p1;
 	Platform* plat1;
 	AssetManager* am;
+	PlatformManager* platMan;
 
 
 public:

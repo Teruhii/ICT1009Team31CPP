@@ -43,7 +43,7 @@ Platform::Platform(sf::Texture* texture, sf::Vector2f spriteScaling,
 	this->yResetPos = resetPosition.y;
 	this->horizontalSpeed = platformConstantVelocity.x;
 	this->verticalSpeed = platformConstantVelocity.y;
-	this->xLimit = -xLimit;
+	this->xLimit = xLimit;
 	this->active = false;
 
 	// Set Body Shape
@@ -87,20 +87,27 @@ void Platform::setPosition(sf::Vector2f newPosition)
 	this->platBody->setPosition(newPosition);
 }
 
+void Platform::movePosition(sf::Vector2f offsetPosition)
+{
+	this->platBody->moveBody(offsetPosition);
+}
+
 void Platform::update(float deltaTime) {
 
 	if (this->active) {
 		// If reached xlimit, reset position
 		if (this->platBody->getPosition().x < this->xLimit) {
 			// Reset to default
+			this->xOffset = this->platBody->getPosition().x - this->xLimit;
 			this->platBody->setPosition(this->xResetPos, this->yResetPos);
 			this->active = false;
+			std::cout << "Platform reset" << std::endl;
 		}
 
 		// Move background based on delta time
 		this->platBody->moveBody(this->horizontalSpeed * deltaTime, 0.f);
-	}
 	std::cout << this->platBody->getPosition().x << " Y: " << this->platBody->getPosition().y << std::endl;
+	}
 
 }
 

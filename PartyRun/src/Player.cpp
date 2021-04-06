@@ -39,6 +39,11 @@
 		this->canJump = true;
 	}
 
+	bool Player::canFallThrough()
+	{
+		return this->canFall;
+	}
+
 	void Player::processInput()
 	{
 		// Any inputs that need to be processed should be here
@@ -49,7 +54,8 @@
 	{
 		// Keyboard input handling to update various info
 		this->states[0] = PlayerState::IDLE; // Reset to Idle
-		//this->states[1] = PlayerState::IDLE; // Reset to Idle
+		this->states[1] = PlayerState::IDLE; // Reset to Idle
+		this->canFall = false;
 
 		// Process variable changes to update player physics
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
@@ -70,17 +76,13 @@
 				this->states[1] = PlayerState::JUMPING;
 				this->canJump = false;
 			}
-
-
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+		
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
 			//this->move(0.f, 1.f);
-			this->pBody->addForce(0.f, 1000.f);
+			this->canFall = true;
 			this->states[1] = PlayerState::FALLING;
 
-		}
-		else {
-			// Put idle here later
 		}
 	}
 
@@ -251,6 +253,8 @@
 		this->maxVelocityY = 8000.f; // Terminal Velocity
 		this->jumpForce = 2500.f;
 		this->initialPosition = new sf::Vector2f(10.f, 10.f);
+		this->canFall = false;
+		this->canJump = true;
 
 		// Set player body for physics
 		this->pBodyShape = new sf::RectangleShape();
@@ -259,7 +263,7 @@
 		this->pBodyShape->setFillColor(sf::Color(255,0,0,255));
 
 		// Create player body for physics
-		this->pBody = new Body(*(this->pBodyShape), true, 1.f, sf::Vector2f(0.f, 0.f), this->gravity, false, 
+		this->pBody = new Body(*(this->pBodyShape), true, 1.f, sf::Vector2f(0.f, 0.f), this->gravity, true, 
 			this->maxVelocityY, this->drag, this->minVelocity, this->maxVelocity, "player");
 		//this->pBody->setPosition(*initialPosition);
 	}

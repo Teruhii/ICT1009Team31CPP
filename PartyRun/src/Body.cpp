@@ -168,7 +168,7 @@ bool Body::checkCollision(Body& otherBody, float push)
 	return this->collider->CheckCollision(otherBody.getCollider(), push);
 }
 
-Collider Body::getCollider()
+Collider& Body::getCollider()
 {
 	return *(this->collider);
 }

@@ -9,12 +9,17 @@ void PlayScreen::Init()
 	this->am = new AssetManager();
 	this->p1 = new Player();
 	this->bgManager = new BackgroundManager();
-
-	this->am->LoadTexture("plank", "Textures/bottom-ground.png");
+	
+	
+	this->am->LoadTexture("bottom-ground", "Textures/bottom-ground.png");
+	this->am->LoadTexture("mid-top-plank", "Textures/mid-top-plank.png");
+	this->platMan = new PlatformManager(this->am->GetTexture("bottom-ground"),
+		this->am->GetTexture("mid-top-plank"), this->am->GetTexture("mid-top-plank"), this->_data);
+	/*
 	this->plat1 = new Platform(&this->am->GetTexture("plank"), 
 		sf::Vector2f((351.5625f / 1200.f), (75.f / 256.f)), sf::Vector2f(600, 198),
 		sf::Vector2f(351.5625f, 15.f), sf::Vector2f(975, 600),
-		sf::Vector2f(-20.f, 0.f), -176.f, "bottom-ground");
+		sf::Vector2f(-20.f, 0.f), -176.f, "bottom-ground");*/
 
 }
 
@@ -50,15 +55,28 @@ void PlayScreen::Update(float dt)
 	//this function updates the processes inside this screen.
 	this->p1->update(dt);
 	this->bgManager->update(dt);
-	this->plat1->update(dt);
-	if (this->p1->checkCollision((this->plat1->getBody()), 0.f)) {
+	this->platMan->update(dt);
+
+	// --- Collision updates ---
+	if (this->platMan->checkGroundCollision(this->p1->getBody())) {
+		this->p1->resetJump();
+	}
+
+	if (!this->p1->canFallThrough()) {
+		if (this->platMan->checkMidTopPlatCollision(this->p1->getBody())) {
+			this->p1->resetJump();
+		}
+	}
+
+	//this->plat1->update(dt);
+	/*if (this->p1->checkCollision((this->plat1->getBody()), 0.f)) {
 		std::cout << this->p1->getBody().getBodyType() << " is in colission with " << \
 			this->plat1->getBody().getBodyType() << std::endl;
 		this->p1->resetJump();
 	}
 	else {
 		//std::cout << "No collision" << std::endl;
-	}
+	}*/
 }
 
 void PlayScreen::Draw(float dt)
@@ -69,8 +87,8 @@ void PlayScreen::Draw(float dt)
 
 	this->bgManager->render(this->_data->window);
 	this->p1->render(this->_data->window);
-	this->plat1->render(this->_data->window);
-
+	//this->plat1->render(this->_data->window);
+	this->platMan->render(this->_data->window);
 	this->_data->window.display();
 }
 

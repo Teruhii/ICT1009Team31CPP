@@ -163,6 +163,7 @@
     <ClCompile Include="src\MainScreen.cpp" />
     <ClCompile Include="src\ObstacleManager.cpp" />
     <ClCompile Include="src\Platform.cpp" />
+    <ClCompile Include="src\PlatformManager.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\PlayScreen.cpp" />
     <ClCompile Include="src\StateMachine.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="header\MainScreen.h" />
     <ClInclude Include="header\ObstacleManager.h" />
     <ClInclude Include="header\Platform.h" />
+    <ClInclude Include="header\PlatformManager.h" />
     <ClInclude Include="header\Player.h" />
     <ClInclude Include="header\PlayScreen.h" />
     <ClInclude Include="header\Screen.h" />

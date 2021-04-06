@@ -33,7 +33,7 @@ public:
 	// Check for collision (Body, pushForce)
 	bool checkCollision(Body& otherBody, float push);
 	sf::Vector2f getPosition() { return body->getPosition();}
-	Collider getCollider();
+	Collider& getCollider();
 
 private:
 	// --- Variables ---

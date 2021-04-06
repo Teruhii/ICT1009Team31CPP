@@ -1,9 +1,10 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "stdafx.h"
 #include "Body.h"
-
+	class PlatformManager;
 class Platform
 {
+
 public:
 	// --- Constructors ---
 	Platform(sf::Texture* texture, sf::Vector2f size, sf::Vector2f position);
@@ -14,6 +15,8 @@ public:
 	bool isActive();
 	void setActive();
 	void setPosition(sf::Vector2f newPosition);
+	void movePosition(sf::Vector2f offsetPosition);
+	friend void updateOffset(Platform&, PlatformManager&);
 
 	// --- Rendering ---
 	void render(sf::RenderTarget& target);
@@ -35,6 +38,7 @@ private:
 
 	// Reset x value
 	int xLimit;
+	float xOffset;
 
 	// --- Texture ---
 	sf::Texture platformTexture;
