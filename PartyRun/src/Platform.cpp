@@ -106,7 +106,7 @@ void Platform::update(float deltaTime) {
 
 		// Move background based on delta time
 		this->platBody->moveBody(this->horizontalSpeed * deltaTime, 0.f);
-	std::cout << this->platBody->getPosition().x << " Y: " << this->platBody->getPosition().y << std::endl;
+	//std::cout << this->platBody->getPosition().x << " Y: " << this->platBody->getPosition().y << std::endl;
 	}
 
 }
@@ -117,6 +117,5 @@ void Platform::render(sf::RenderTarget& target)
 	this->platformSprite.setPosition(this->platBody->getPosition());
 
 	target.draw(this->platformSprite);
-	target.draw(*this->platBodyShape);
 	target.draw(*this->platBodyShape);
 }

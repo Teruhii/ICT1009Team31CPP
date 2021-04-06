@@ -20,8 +20,6 @@ public:
 
 	// --- Rendering ---
 	void render(sf::RenderTarget& target);
-	// creates exposed array of platforms
-	// friend function with platform to store the latest offset for resetting platforms
 
 private:
 	Platform* groundPlatforms[4];

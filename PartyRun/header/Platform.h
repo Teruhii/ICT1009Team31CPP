@@ -8,7 +8,10 @@ class Platform
 public:
 	// --- Constructors ---
 	Platform(sf::Texture* texture, sf::Vector2f size, sf::Vector2f position);
-	Platform(sf::Texture* texture, sf::Vector2f spriteScaling, sf::Vector2f spriteOriginOffset, sf::Vector2f size, sf::Vector2f resetPosition, sf::Vector2f platformConstantVelocity, float xLimit, std::string platformName);
+	Platform(sf::Texture* texture, sf::Vector2f spriteScaling, 
+		sf::Vector2f spriteOriginOffset, sf::Vector2f size, 
+		sf::Vector2f resetPosition, sf::Vector2f platformConstantVelocity, 
+		float xLimit, std::string platformName);
 	~Platform();
 
 	// --- Functions ---
@@ -47,6 +50,5 @@ private:
 	// --- Physics variables ---
 	sf::RectangleShape* platBodyShape;
 	Body* platBody;
-	std::string bodyType;
 };
 

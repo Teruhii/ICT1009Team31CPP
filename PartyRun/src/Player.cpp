@@ -21,6 +21,9 @@
 	{
 		this->processInput();
 		this->updatePhysics(deltaTime);
+		this->updateInvultimer(deltaTime);
+		//std::cout << this->pBody->getPosition().x << " Y: " << this->pBody->getPosition().y << std::endl;
+
 	}
 
 	void Player::render(sf::RenderTarget& target)
@@ -42,6 +45,16 @@
 	bool Player::canFallThrough()
 	{
 		return this->canFall;
+	}
+
+	bool Player::isInvul()
+	{
+		return this->invul;
+	}
+
+	void Player::setInvul(bool invulStatus)
+	{
+		this->invul = invulStatus;
 	}
 
 	void Player::processInput()
@@ -220,6 +233,16 @@
 		return this->pBody->checkCollision(otherBod, push);
 	}
 
+	void Player::updateInvultimer(float deltaTime)
+	{
+		this->invulTimer += deltaTime;
+		if (this->invulTimer > this->invulDuration) {
+			// Reset invul timer
+			this->invulTimer = 0.f;
+			this->invul = false;
+		}
+	}
+
 	void Player::initTexture()
 	{
 		if (!this->textureSheet.loadFromFile("Textures/entity.png")) {
@@ -255,6 +278,9 @@
 		this->initialPosition = new sf::Vector2f(10.f, 10.f);
 		this->canFall = false;
 		this->canJump = true;
+		this->invulTimer = 0.f;
+		this->invulDuration = 3.f;
+		this->invul = false;
 
 		// Set player body for physics
 		this->pBodyShape = new sf::RectangleShape();

@@ -10,6 +10,8 @@
 #include "../header/GameManager.h"
 #include "../header/Platform.h"
 #include "../header/PlatformManager.h"
+#include "../header/Crow.h"
+#include "../header/ObstacleManager.h"
 
 class PlayScreen : public Screen {
 private:
@@ -17,9 +19,9 @@ private:
 	GameDataRef _data;
 	BackgroundManager* bgManager;
 	Player* p1;
-	Platform* plat1;
 	AssetManager* am;
 	PlatformManager* platMan;
+	ObstacleManager* obstMan;
 
 
 public:

@@ -21,6 +21,13 @@ void PlayScreen::Init()
 		sf::Vector2f(351.5625f, 15.f), sf::Vector2f(975, 600),
 		sf::Vector2f(-20.f, 0.f), -176.f, "bottom-ground");*/
 
+
+	this->am->LoadTexture("crow-slow", "Textures/bird-blue.png");
+	this->am->LoadTexture("crow-fast", "Textures/bird-yellow.png");
+	this->obstMan = new ObstacleManager(this->am->GetTexture("crow-fast"),
+		this->am->GetTexture("crow-slow"), this->_data);
+
+
 }
 
 void PlayScreen::HandleInput()
@@ -56,6 +63,7 @@ void PlayScreen::Update(float dt)
 	this->p1->update(dt);
 	this->bgManager->update(dt);
 	this->platMan->update(dt);
+	this->obstMan->update(dt);
 
 	// --- Collision updates ---
 	if (this->platMan->checkGroundCollision(this->p1->getBody())) {
@@ -67,6 +75,27 @@ void PlayScreen::Update(float dt)
 			this->p1->resetJump();
 		}
 	}
+
+	if (!this->p1->isInvul()) {
+		if (this->obstMan->checkFastCrowCollision(this->p1->getBody())) {
+			// Player hit by fast crow
+			std::cout << "Player hit by fast crow" << std::endl;
+			this->p1->setInvul(true);
+			this->p1->move(-.1f, -.1f, 1.f);
+		}
+
+		if (this->obstMan->checkSlowCrowCollision(this->p1->getBody())) {
+			// Player hit by slow crow
+			std::cout << "Player hit by slow crow" << std::endl;
+			this->p1->setInvul(true);
+
+			this->p1->move(-.1f, -.1f, 1.f);
+		}
+	}
+
+
+
+
 
 	//this->plat1->update(dt);
 	/*if (this->p1->checkCollision((this->plat1->getBody()), 0.f)) {
@@ -86,9 +115,10 @@ void PlayScreen::Draw(float dt)
 	this->_data->window.clear(sf::Color::Red);
 
 	this->bgManager->render(this->_data->window);
-	this->p1->render(this->_data->window);
-	//this->plat1->render(this->_data->window);
 	this->platMan->render(this->_data->window);
+	this->obstMan->render(this->_data->window);
+	this->p1->render(this->_data->window);
+	
 	this->_data->window.display();
 }
 

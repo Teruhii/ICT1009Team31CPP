@@ -61,6 +61,10 @@ PlatformManager::PlatformManager(sf::Texture groundTexture, sf::Texture middleTe
 
 PlatformManager::~PlatformManager()
 {
+
+	delete this->groundPlatforms;
+	delete this->middlePlatforms;
+	delete this->topPlatforms;
 }
 
 void PlatformManager::update(float deltaTime)

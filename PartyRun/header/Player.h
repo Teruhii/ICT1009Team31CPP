@@ -28,6 +28,8 @@
 		// --- Interactions ---
 		void resetJump();
 		bool canFallThrough();
+		bool isInvul();
+		void setInvul(bool invulStatus);
 
 		// --- Inputs ---
 		void processInput();
@@ -51,6 +53,11 @@
 		// FSM
 		bool canJump;
 		bool canFall;
+		bool invul;
+		float invulTimer;
+		float invulDuration;
+		void updateInvultimer(float deltaTime);
+
 		// --- ANIMATION CLIPS ---
 		sf::Sprite sprite;
 		sf::Texture textureSheet;
