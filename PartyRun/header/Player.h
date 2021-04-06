@@ -20,24 +20,46 @@
 	{
 
 	public:
+		// --- Constructors ---
 		Player();
 		~Player();
 		void render(sf::RenderTarget& target);
+
+		// --- Interactions ---
+		void resetJump();
+		bool canFallThrough();
+		bool isInvul();
+		void setInvul(bool invulStatus);
+
+		// --- Inputs ---
 		void processInput();
 		void handleInput(int);
+    
+    // --- Animations ---
 		void updateAnimations();
-		void move(const float dir_x, const float dir_y);
+
+		// --- Physics ---
+		void move(const float, const float, float);
 		void jump(const float dir_x, const float dir_y);
 		void update(float);
 		void updatePhysics(float);
-		Body getBody();
+		Body& getBody();
+		bool checkCollision(Collider, float);
+		bool checkCollision(Body& otherBod, float push);
 		//static PlayerState playerState; 
 
 	private:
+		PlayerState states[2];
 		int x;
-		PlayerState state;
+
 		// FSM
 		bool canJump;
+		bool canFall;
+		bool invul;
+		float invulTimer;
+		float invulDuration;
+		void updateInvultimer(float deltaTime);
+
 		// --- ANIMATION CLIPS ---
 		sf::Sprite sprite;
 		sf::Texture textureSheet;
@@ -52,7 +74,9 @@
 		sf::RectangleShape* pBodyShape;
 		Body* pBody;
 		sf::Vector2f velocity;
-		float acceleration;
+		sf::Vector2f* initialPosition;
+		float horizontalMovementSpeed;
+		float verticalMovementSpeed;
 		float drag;
 		float maxVelocity;
 		float minVelocity;
