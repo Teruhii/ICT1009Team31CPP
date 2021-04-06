@@ -1,6 +1,6 @@
 #pragma once
-#include "stdafx.h"
-#include "BackgroundImage.h"
+#include "../header/stdafx.h"
+#include "../header/BackgroundImage.h"
 
 
 class BackgroundManager

@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include "stdafx.h"
+#include "../header/stdafx.h"
 
 
 class AssetManager

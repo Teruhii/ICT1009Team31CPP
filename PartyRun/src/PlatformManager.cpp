@@ -31,7 +31,7 @@ PlatformManager::PlatformManager(sf::Texture groundTexture, sf::Texture middleTe
 	// Create ground platforms
 	for (int i = 0; i < 4; i++) {
 		groundPlatforms[i] = new Platform(&groundTexture,
-			sf::Vector2f((350.f / 1200.f), (75.f / 256.f)), sf::Vector2f(600, 198),
+			sf::Vector2f((350.f / 1200.f), (75.f / 256.f)), sf::Vector2f(1200, 150),
 			sf::Vector2f(350.f, 15.f), sf::Vector2f(1225.f, 600.f),
 			sf::Vector2f(-200.f, 0.f), (-175.f), "bottom-ground");
 		groundPlatforms[i]->setPosition(sf::Vector2f(-175.f + ((i + 1) * (350.f)), 600));
@@ -41,9 +41,9 @@ PlatformManager::PlatformManager(sf::Texture groundTexture, sf::Texture middleTe
 	// Create middle platforms
 	for (int i = 0; i < 4; i++) {
 		middlePlatforms[i] = new Platform(&middleTexture,
-			sf::Vector2f((350.f / 1200.f), (75.f / 256.f)), sf::Vector2f(600, 198),
+			sf::Vector2f(1.f / 1.2f, 1.f / 2.0f), sf::Vector2f(230, 50),
 			sf::Vector2f(350.f, 15.f), sf::Vector2f(1225.f, 400.f),
-			sf::Vector2f(-200.f, 0.f), (-175.f), "mid-top");
+			sf::Vector2f(-800.f, 0.f), (-175.f), "mid-top");
 		middlePlatforms[i]->setPosition(sf::Vector2f(1225.f, 400));
 		//groundPlatforms[i]->setActive();
 	}
@@ -51,9 +51,9 @@ PlatformManager::PlatformManager(sf::Texture groundTexture, sf::Texture middleTe
 	// Create top platforms
 	for (int i = 0; i < 4; i++) {
 		topPlatforms[i] = new Platform(&topTexture,
-			sf::Vector2f((350.f / 1200.f), (75.f / 256.f)), sf::Vector2f(600, 198),
+			sf::Vector2f(1.f / 1.2f, 1.f / 2.0f), sf::Vector2f(230, 50),
 			sf::Vector2f(350.f, 15.f), sf::Vector2f(1225.f, 200.f),
-			sf::Vector2f(-200.f, 0.f), (-175.f), "mid-top");
+			sf::Vector2f(-600.f, 0.f), (-175.f), "mid-top");
 		topPlatforms[i]->setPosition(sf::Vector2f(1225.f, 200));
 		//groundPlatforms[i]->setActive();
 	}

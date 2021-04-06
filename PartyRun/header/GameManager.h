@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include <string>
-#include "stdafx.h"
+#include "../header/stdafx.h"
 //#include "Game.h"
 #include "../header/StateMachine.h"
 #include "../header/AssetManager.h"

@@ -1,7 +1,7 @@
 #pragma once
-#include "stdafx.h"
-#include "Platform.h"
-#include "GameManager.h"
+#include "../header/stdafx.h"
+#include "../header/Platform.h"
+#include "../header/GameManager.h"
 
 
 class PlatformManager

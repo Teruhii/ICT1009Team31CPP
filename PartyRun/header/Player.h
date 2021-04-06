@@ -1,6 +1,6 @@
 #pragma once
-#include "stdafx.h"
-#include "Body.h"
+#include "../header/stdafx.h"
+#include "../header/Body.h"
 
 
 	enum class PlayerState {

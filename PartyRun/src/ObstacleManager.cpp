@@ -1,9 +1,5 @@
 #include "../header/ObstacleManager.h"
 
-
-
-
-
 ObstacleManager::ObstacleManager(GameDataRef data) : _data(data)
 {
 	// Create crows
@@ -35,7 +31,7 @@ ObstacleManager::ObstacleManager(sf::Texture fastCrowTexture,
 	// Create fast crows
 	for (int i = 0; i < 10; i++) {
 		fastCrows[i] = new Crow(&fastCrowTexture,
-			sf::Vector2f((1.f / 1.f), (1.f / 1.f)), sf::Vector2f(0.f, 0.f),
+			sf::Vector2f(1.f / 2.f, 1.f / 2.0f), sf::Vector2f(100.f, 120.f),
 			sf::Vector2f(50.f, 50.f), sf::Vector2f(1000.f, 0.f),
 			sf::Vector2f(-250.f, 0.f), (-175.f), "crow-fast");
 		fastCrows[i]->setPosition(sf::Vector2f(1000.f, 0.f));
@@ -45,7 +41,7 @@ ObstacleManager::ObstacleManager(sf::Texture fastCrowTexture,
 	// Create slow crows
 	for (int i = 0; i < 10; i++) {
 		slowCrows[i] = new Crow(&slowCrowTexture,
-			sf::Vector2f((1.f / 1.f), (1.f / 1.f)), sf::Vector2f(0.f, 0.f),
+			sf::Vector2f(1.f / 2.f, 1.f / 2.0f), sf::Vector2f(100.f, 120.f),
 			sf::Vector2f(50.f, 50.f), sf::Vector2f(1000.f, 0.f),
 			sf::Vector2f(-200.f, 0.f), (-175.f), "crow-slow");
 		slowCrows[i]->setPosition(sf::Vector2f(1000.f, 0.f));

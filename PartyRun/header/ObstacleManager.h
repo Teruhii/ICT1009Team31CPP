@@ -1,7 +1,7 @@
 #pragma once
-#include "stdafx.h"
-#include "Crow.h"
-#include "GameManager.h"
+#include "../header/stdafx.h"
+#include "../header/Crow.h"
+#include "../header/GameManager.h"
 
 
 class ObstacleManager
