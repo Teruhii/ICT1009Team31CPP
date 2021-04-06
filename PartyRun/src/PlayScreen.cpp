@@ -7,6 +7,7 @@ void PlayScreen::Init()
 	//initialise this stuff needed to render things into this playscreen
 
 	this->p1 = new Player();
+	this->p2 = new Player();
 	this->bgManager = new BackgroundManager();
 
 
@@ -34,7 +35,8 @@ void PlayScreen::HandleInput()
 			}
 		}
 
-		this->p1->handleInput();
+		this->p1->handleInput(1);
+		this->p2->handleInput(2);
 	}
 
 }
@@ -43,6 +45,7 @@ void PlayScreen::Update(float dt)
 {
 	//this function updates the processes inside this screen.
 	this->p1->update(dt);
+	this->p2->update(dt);
 	this->bgManager->update(dt);
 
 
@@ -56,6 +59,7 @@ void PlayScreen::Draw(float dt)
 
 	this->bgManager->render(this->_data->window);
 	this->p1->render(this->_data->window);
+	this->p2->render(this->_data->window);
 
 	this->_data->window.display();
 }

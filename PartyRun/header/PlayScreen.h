@@ -15,6 +15,7 @@ private:
 	GameDataRef _data;
 	BackgroundManager* bgManager;
 	Player* p1;
+	Player* p2;
 
 
 public:

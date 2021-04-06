@@ -38,39 +38,68 @@
 		
 	}
 
-	void Player::handleInput()
+	void Player::handleInput(int x)
 	{
 		// Keyboard input handling to update various info
 		this->state = PlayerState::IDLE; // Reset to Idle
 
-		// Process variable changes to update player physics
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
-			//this->move(-1.f, 0.f);
-			this->pBody->addForce(sf::Vector2f(-1000.f, 0.f));
-			this->state = PlayerState::RUNNING_LEFT;
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
-			//this->move(1.f, 0.f);
-			this->pBody->addForce(sf::Vector2f(1000.f, 0.f));
-			this->state = PlayerState::RUNNING_RIGHT;
-		}
+		switch (x) {
+			case 1:
+				// Process variable changes to update player physics
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
+					//this->move(-1.f, 0.f);
+					this->pBody->addForce(sf::Vector2f(-1000.f, 0.f));
+					this->state = PlayerState::RUNNING_LEFT;
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
+					//this->move(1.f, 0.f);
+					this->pBody->addForce(sf::Vector2f(1000.f, 0.f));
+					this->state = PlayerState::RUNNING_RIGHT;
+				}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
-			if (this->state != PlayerState::JUMPING) {
-				//this->jump(0.f, -1.f);
-				this->pBody->addForce(0.f, -1000.f);
-				this->state = PlayerState::JUMPING;
-			}
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+					if (this->state != PlayerState::JUMPING) {
+						//this->jump(0.f, -1.f);
+						this->pBody->addForce(0.f, -1000.f);
+						this->state = PlayerState::JUMPING;
+					}
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+					//this->move(0.f, 1.f);
+					this->state = PlayerState::FALLING;
 
+				}
+				else {
+					// Put idle here later
+				}
+				break;
+			case 2:
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
+					//this->move(-1.f, 0.f);
+					this->pBody->addForce(sf::Vector2f(-1000.f, 0.f));
+					this->state = PlayerState::RUNNING_LEFT;
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
+					//this->move(1.f, 0.f);
+					this->pBody->addForce(sf::Vector2f(1000.f, 0.f));
+					this->state = PlayerState::RUNNING_RIGHT;
+				}
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
+					if (this->state != PlayerState::JUMPING) {
+						//this->jump(0.f, -1.f);
+						this->pBody->addForce(0.f, -1000.f);
+						this->state = PlayerState::JUMPING;
+					}
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
+					//this->move(0.f, 1.f);
+					this->state = PlayerState::FALLING;
 
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
-			//this->move(0.f, 1.f);
-			this->state = PlayerState::FALLING;
-
-		}
-		else {
-			// Put idle here later
+				}
+				else {
+					// Put idle here later
+				}
+				break;
 		}
 	}
 
