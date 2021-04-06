@@ -1,29 +1,33 @@
 #include "../header/Player.h"
 
 	// Constructor
-	Player::Player()
+	Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) :
+		animation(texture, imageCount, switchTime)
 	{
 		this->states[0] = PlayerState::IDLE;
 		this->states[1] = PlayerState::IDLE;
 		// Instantiate FSM with Clips
 		this->initTexture();
-		this->initSprite();
+		this->initSprite(texture);
 		this->initAnimations();
 		this->initPhysics();
+
+		this->speed = speed;
+		
+
 	}
 
 	// Deconstructor
 	Player::~Player()
 	{
 	}
+	
 
 	void Player::update(float deltaTime)
 	{
 		this->processInput();
 		this->updatePhysics(deltaTime);
-		this->updateInvultimer(deltaTime);
-		//std::cout << this->pBody->getPosition().x << " Y: " << this->pBody->getPosition().y << std::endl;
-
+		this->updateAnimations(deltaTime);
 	}
 
 	void Player::render(sf::RenderTarget& target)
@@ -32,7 +36,7 @@
 		// OR
 		// weapon.playAnimation();
 		this->sprite.setPosition(this->pBody->getPosition());// move(this->velocity); // Update sprite position
-		this->updateAnimations();
+		
 		target.draw(*this->pBodyShape);
 		target.draw(this->sprite);
 	}
@@ -47,147 +51,99 @@
 		return this->canFall;
 	}
 
-	bool Player::isInvul()
-	{
-		return this->invul;
-	}
-
-	void Player::setInvul(bool invulStatus)
-	{
-		this->invul = invulStatus;
-	}
-
 	void Player::processInput()
 	{
 		// Any inputs that need to be processed should be here
-		
+		handleInput();
 	}
 
-	void Player::handleInput(int x)
+	void Player::handleInput()
 	{
 		// Keyboard input handling to update various info
 		this->states[0] = PlayerState::IDLE; // Reset to Idle
 		this->states[1] = PlayerState::IDLE; // Reset to Idle
 		this->canFall = false;
-
-		switch (x) {
-			case 1:
-				// Process variable changes to update player physics
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
+		// Process variable changes to update player physics
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
+			//this->move(-1.f, 0.f);
+			//this->pBody->addForce(sf::Vector2f(-1000.f, 0.f));
 			this->states[0] = PlayerState::RUNNING_LEFT;
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
+			//this->move(1.f, 0.f);
+			//this->pBody->addForce(sf::Vector2f(1000.f, 0.f));
 			this->states[0] = PlayerState::RUNNING_RIGHT;
-				}
+		}
 
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
 			if (this->canJump) {
 				//this->jump(0.f, -1.f);
 				this->pBody->addForce(0.f, -this->jumpForce);
 				this->states[1] = PlayerState::JUMPING;
 				this->canJump = false;
 			}
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+		}
+		
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
 			//this->move(0.f, 1.f);
 			this->canFall = true;
 			this->states[1] = PlayerState::FALLING;
-
-				}
-				else {
-					// Put idle here later
-				}
-				break;
-			case 2:
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
-			this->states[0] = PlayerState::RUNNING_LEFT;
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
-					this->states[0] = PlayerState::RUNNING_RIGHT;
-				}
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
-			if (this->canJump) {
-				//this->jump(0.f, -1.f);
-				this->pBody->addForce(0.f, -this->jumpForce);
-				this->states[1] = PlayerState::JUMPING;
-				this->canJump = false;
-			}
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
-			//this->move(0.f, 1.f);
-			this->canFall = true;
-			this->states[1] = PlayerState::FALLING;
-
-				}
-				else {
-					// Put idle here later
-				}
-				break;
 
 		}
+		
 	}
 
-	void Player::updateAnimations()
+	
+
+	void Player::updateAnimations(float deltaTime)
 	{
+		if (this->states[1] == PlayerState::JUMPING) {
+
+			row = 2;
+			if (this->states[0] == PlayerState::RUNNING_LEFT)
+			{
+				faceRight = false;
+
+			}
+			else if (this->states[0] == PlayerState::RUNNING_RIGHT)
+			{
+				faceRight = true;
+			}
+			this->sprite.setTextureRect(this->animation.uvRect);
+		}
+		else if (this->states[1] == PlayerState::IDLE) {
+
+			row = 0;
+			if (this->states[0] == PlayerState::RUNNING_LEFT)
+			{
+				row = 1;
+				faceRight = false;
+
+			}
+			else if (this->states[0] == PlayerState::RUNNING_RIGHT)
+			{
+				row = 1;
+				faceRight = true;
+			}
+			this->sprite.setTextureRect(this->animation.uvRect);
+		}
+		else if (this->states[1] == PlayerState::FALLING) {
+
+			row = 7;
+			if (this->states[0] == PlayerState::RUNNING_LEFT)
+			{
+				faceRight = false;
+
+			}
+			else if (this->states[0] == PlayerState::RUNNING_RIGHT)
+			{
+				faceRight = true;
+			}
+			this->sprite.setTextureRect(this->animation.uvRect);
+		}
 		
-		if (this->states[0] == PlayerState::IDLE) {
 
-			if (this->animationTimer.getElapsedTime().asSeconds() >= 0.2f) {// Need to abstract later -----------------------
-				this->currentTextureFrame.top = 0;
-				this->currentTextureFrame.left = 0;
-				 /*for looping of animation only
-				// Loop running
-				if (this->currentTextureFrame.top >= 64) {
-					this->currentTextureFrame.top = 16;
-				}*/
-
-				// Reset timer
-				this->animationTimer.restart(); // Need to abstract later -----------------------
-				this->sprite.setTextureRect(this->currentTextureFrame);
-			}
-		}
-		else if (this->states[0] == PlayerState::RUNNING_LEFT)
-		{
-			// Timer per animation to abstract later ------------------------------------------------
-			if (this->animationTimer.getElapsedTime().asSeconds() >= 0.2f) {
-				this->currentTextureFrame.top += 16;
-				this->currentTextureFrame.left = 32;
-
-				// Loop running
-				if (this->currentTextureFrame.top >= 64) {
-					this->currentTextureFrame.top = 16;
-				}
-
-				// Reset timer
-				this->animationTimer.restart();// Need to abstract later -----------------------
-				this->sprite.setTextureRect(this->currentTextureFrame);
-			}
-		}
-		else if (this->states[0] == PlayerState::RUNNING_RIGHT)
-		{
-			if (this->animationTimer.getElapsedTime().asSeconds() >= 0.2f) {// Need to abstract later -----------------------
-				// Change this
-				this->currentTextureFrame.top += 16;
-				this->currentTextureFrame.left = 32;
-
-				// Loop jumping animation
-				if (this->currentTextureFrame.top >= 64) {
-					this->currentTextureFrame.top = 16;
-				}
-
-				// Reset timer
-				this->animationTimer.restart();// Need to abstract later -----------------------
-				this->sprite.setTextureRect(this->currentTextureFrame);
-			}
-		}
-		else
-		{
-			// For transitioning between states
-			// Reset timer
-			this->animationTimer.restart();
-		}
-
-		
+		this->animation.Update(row, deltaTime, faceRight);
 
 	}
 
@@ -234,14 +190,15 @@
 		if (std::abs(this->velocity.y) < this->minVelocity) { // For up and down
 			this->velocity.y = 0;
 		}*/
-
-		if (this->states[0] == PlayerState::RUNNING_LEFT) {
-			this->move(-1.f, 0.f, deltaTime);
-		}
-		else if (this->states[0] == PlayerState::RUNNING_RIGHT) {
-			this->move(1.f, 0.f, deltaTime);
-		}
-
+	
+		
+			if (this->states[0] == PlayerState::RUNNING_LEFT) {
+				this->move(-1.f, 0.f, deltaTime);
+			}
+			else if (this->states[0] == PlayerState::RUNNING_RIGHT) {
+				this->move(1.f, 0.f, deltaTime);
+			}
+	
 		this->pBody->update(deltaTime);
 		//std::cout << this->pBody->getPosition().x << " Y: " << this->pBody->getPosition().y << std::endl;
 	}
@@ -261,16 +218,6 @@
 		return this->pBody->checkCollision(otherBod, push);
 	}
 
-	void Player::updateInvultimer(float deltaTime)
-	{
-		this->invulTimer += deltaTime;
-		if (this->invulTimer > this->invulDuration) {
-			// Reset invul timer
-			this->invulTimer = 0.f;
-			this->invul = false;
-		}
-	}
-
 	void Player::initTexture()
 	{
 		if (!this->textureSheet.loadFromFile("Textures/entity.png")) {
@@ -278,13 +225,17 @@
 		}
 	}
 
-	void Player::initSprite()
+	void Player::initSprite(sf::Texture* texture)
 	{
-		this->sprite.setTexture(this->textureSheet);
+		this->sprite.setTexture(*texture);
+		this->body.setSize(sf::Vector2f(100.0f, 150.0f));
+		this->body.setOrigin(this->body.getSize() / 2.0f);
+		this->body.setPosition(206.0f, 206.0f);
+		this->body.setTexture(texture);
 		// Chooses how big the text is rendered and where
-		this->currentTextureFrame = sf::IntRect(0, 0, 16, 16);
+		/*this->currentTextureFrame = sf::IntRect(0, 0, 16, 16);
 		this->sprite.setTextureRect(this->currentTextureFrame);
-		this->sprite.setScale(2.5f, 2.5f);
+		this->sprite.setScale(2.5f, 2.5f);*/
 	}
 
 	void Player::initAnimations()
@@ -306,9 +257,6 @@
 		this->initialPosition = new sf::Vector2f(10.f, 10.f);
 		this->canFall = false;
 		this->canJump = true;
-		this->invulTimer = 0.f;
-		this->invulDuration = 3.f;
-		this->invul = false;
 
 		// Set player body for physics
 		this->pBodyShape = new sf::RectangleShape();

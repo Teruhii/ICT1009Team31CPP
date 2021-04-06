@@ -1,6 +1,7 @@
 #pragma once
-#include "../header/stdafx.h"
-#include "../header/Body.h"
+#include "stdafx.h"
+#include "Body.h"
+#include "Animation.h"
 
 
 	enum class PlayerState {
@@ -21,22 +22,20 @@
 
 	public:
 		// --- Constructors ---
-		Player();
+		Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
 		~Player();
 		void render(sf::RenderTarget& target);
 
 		// --- Interactions ---
 		void resetJump();
 		bool canFallThrough();
-		bool isInvul();
-		void setInvul(bool invulStatus);
 
 		// --- Inputs ---
 		void processInput();
-		void handleInput(int);
-    
-    // --- Animations ---
-		void updateAnimations();
+		void handleInput();
+
+		// --- Animations ---
+		void updateAnimations(float deltaTime);
 
 		// --- Physics ---
 		void move(const float, const float, float);
@@ -50,24 +49,22 @@
 
 	private:
 		PlayerState states[2];
-		int x;
-
 		// FSM
 		bool canJump;
 		bool canFall;
-		bool invul;
-		float invulTimer;
-		float invulDuration;
-		void updateInvultimer(float deltaTime);
-
 		// --- ANIMATION CLIPS ---
 		sf::Sprite sprite;
 		sf::Texture textureSheet;
 		sf::IntRect currentTextureFrame;
 		sf::Clock animationTimer;
 		void initTexture();
-		void initSprite();
+		void initSprite(sf::Texture* texture);
 		void initAnimations();
+		sf::RectangleShape body;
+		Animation animation;
+		unsigned int row;
+		float speed;
+		bool faceRight;
 		// --- Animation Clips end ---
 
 		// --- Physics Start ---
