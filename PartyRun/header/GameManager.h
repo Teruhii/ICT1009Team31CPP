@@ -35,15 +35,7 @@ private:
 	void Run();
 	
 public:
-	/*
-	//GameManager();
-	//void update();
-	//void render();
-	//void setGameTo(Game* game);
-	//const bool running() const;
 
-	this is from previous version
-	*/
 	GameManager(int width, int height, std::string title);
 };
 

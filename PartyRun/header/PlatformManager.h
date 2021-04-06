@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Platform.h"
 #include "GameManager.h"
+#include <time.h>
 
 
 class PlatformManager

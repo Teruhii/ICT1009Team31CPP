@@ -1,16 +1,2 @@
-﻿  AssetManager.cpp
-  BackgroundImage.cpp
-D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\BackgroundImage.cpp(34,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\BackgroundImage.cpp(34,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\BackgroundImage.cpp(48,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  BackgroundManager.cpp
-  EndScreen.cpp
-  GameScreen.cpp
-  GameManager.cpp
-  Main.cpp
-  MainScreen.cpp
-  Player.cpp
-  PlayScreen.cpp
-  StateMachine.cpp
-  Generating Code...
+﻿  PlatformManager.cpp
   PartyRun.vcxproj -> D:\SiTProjects\ICT1009Team31CPP\PartyRun\x64\Debug\PartyRun.exe
