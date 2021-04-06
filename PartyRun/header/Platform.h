@@ -1,7 +1,9 @@
 #pragma once
-#include "stdafx.h"
-#include "Body.h"
-	class PlatformManager;
+#include "../header/stdafx.h"
+#include "../header/Body.h"
+
+class PlatformManager;
+
 class Platform
 {
 

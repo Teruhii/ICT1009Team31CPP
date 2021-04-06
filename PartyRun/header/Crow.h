@@ -1,7 +1,7 @@
 #pragma once
-#include "stdafx.h"
-#include "Body.h"
-#include "Animation.h"
+#include "../header/stdafx.h"
+#include "../header/Body.h"
+#include "../header/Animation.h"
 
 
 class Crow

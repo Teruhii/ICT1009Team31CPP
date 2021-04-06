@@ -2,37 +2,6 @@
 #include "../header/MainScreen.h"
 #include "../header/PlayScreen.h"
 
-/*
-	GameManager::GameManager()
-	{
-		this->currentGame = new Game();
-	}
-
-	void GameManager::update()
-	{
-		this->currentGame->update();
-	}
-
-	void GameManager::render()
-	{
-		this->currentGame->render();
-		
-	}
-
-	void GameManager::setGameTo(Game* game)
-	{
-		//delete this->currentGame;
-		this->currentGame = game;
-	}
-
-	const bool GameManager::running() const
-	{
-		return this->currentGame->running();
-	}
-*/
-
-
-
 GameManager::GameManager(int width, int height, std::string title)
 {
 	_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);

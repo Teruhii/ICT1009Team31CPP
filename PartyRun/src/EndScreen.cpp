@@ -9,6 +9,7 @@ void EndScreen::Init()
 {
 	this->_data->assets.LoadTexture("endscreenbg", ENDSCREEN_BACKGROUND_FILEPATH);
 	_background.setTexture(this->_data->assets.GetTexture("endscreenbg"));
+	_background.setScale(800.f / 1920.f, 600.f / 1080.f);
 
 }
 

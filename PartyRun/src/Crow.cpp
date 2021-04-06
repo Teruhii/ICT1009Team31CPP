@@ -1,9 +1,5 @@
 #include "../header/Crow.h"
 
-
-
-
-
 Crow::Crow()
 {
 
