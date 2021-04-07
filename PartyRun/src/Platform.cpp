@@ -50,7 +50,7 @@ Platform::Platform(sf::Texture* texture, sf::Vector2f spriteScaling,
 	this->platBodyShape = new sf::RectangleShape();
 	this->platBodyShape->setSize(size);
 	this->platBodyShape->setOrigin(size / 2.0f);
-	this->platBodyShape->setFillColor(sf::Color(0, 255, 0, 255));
+	this->platBodyShape->setFillColor(sf::Color(0, 255, 0, 100));
 
 	// Create body for platform
 	this->platBody = new Body(*(this->platBodyShape), false, 1000.f, sf::Vector2f(0.f, 0.f), 0.f, false,

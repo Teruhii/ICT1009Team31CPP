@@ -73,36 +73,8 @@ void PlayScreen::Update(float dt)
 	this->obstMan->update(dt);
 
 	// --- Collision updates ---
-	if (this->platMan->checkGroundCollision(this->p1->getBody())) {
-		this->p1->resetJump();
-	}
-
-	if (!this->p1->canFallThrough()) {
-		if (this->platMan->checkMidTopPlatCollision(this->p1->getBody())) {
-			this->p1->resetJump();
-		}
-	}
-
-	if (!this->p1->isInvul()) {
-		if (this->obstMan->checkFastCrowCollision(this->p1->getBody())) {
-			// Player hit by fast crow
-			std::cout << "Player hit by fast crow" << std::endl;
-			this->p1->setInvul(true);
-			this->p1->move(-.1f, -.1f, 1.f);
-		}
-
-		if (this->obstMan->checkSlowCrowCollision(this->p1->getBody())) {
-			// Player hit by slow crow
-			std::cout << "Player hit by slow crow" << std::endl;
-			this->p1->setInvul(true);
-
-			this->p1->move(-.1f, -.1f, 1.f);
-		}
-	}
-
-
-
-
+	collisionUpdate(p1);
+	collisionUpdate(p2);
 
 	//this->plat1->update(dt);
 	/*if (this->p1->checkCollision((this->plat1->getBody()), 0.f)) {
@@ -132,3 +104,66 @@ void PlayScreen::Draw(float dt)
 	this->_data->window.display();
 }
 
+
+void PlayScreen::collisionUpdate(Player* playerobj) {
+
+	this->playerobj = playerobj;
+
+	if (this->platMan->checkGroundCollision(this->playerobj->getBody())) {
+		this->playerobj->resetJump();
+	}
+
+	if (!this->playerobj->canFallThrough()) {
+		if (this->platMan->checkMidTopPlatCollision(this->playerobj->getBody())) {
+			this->playerobj->resetJump();
+		}
+	}
+
+	if (!this->playerobj->isInvul()) {
+		if (this->obstMan->checkFastCrowCollision(this->playerobj->getBody())) {
+			// Player hit by fast crow
+			std::cout << "Player hit by fast crow" << std::endl;
+			this->playerobj->setInvul(true);
+			this->playerobj->move(-.1f, -.1f, 1.f);
+		}
+
+		if (this->obstMan->checkSlowCrowCollision(this->playerobj->getBody())) {
+			// Player hit by slow crow
+			std::cout << "Player hit by slow crow" << std::endl;
+			this->playerobj->setInvul(true);
+
+			this->playerobj->move(-.1f, -.1f, 1.f);
+		}
+	}
+}
+
+/*
+* original code for collision update
+if (this->platMan->checkGroundCollision(this->p1->getBody())) {
+		this->p1->resetJump();
+		this->p2->resetJump();
+	}
+
+	if (!this->p1->canFallThrough()) {
+		if (this->platMan->checkMidTopPlatCollision(this->p1->getBody())) {
+			this->p1->resetJump();
+		}
+	}
+
+	if (!this->p1->isInvul()) {
+		if (this->obstMan->checkFastCrowCollision(this->p1->getBody())) {
+			// Player hit by fast crow
+			std::cout << "Player hit by fast crow" << std::endl;
+			this->p1->setInvul(true);
+			this->p1->move(-.1f, -.1f, 1.f);
+		}
+
+		if (this->obstMan->checkSlowCrowCollision(this->p1->getBody())) {
+			// Player hit by slow crow
+			std::cout << "Player hit by slow crow" << std::endl;
+			this->p1->setInvul(true);
+
+			this->p1->move(-.1f, -.1f, 1.f);
+		}
+	}
+*/

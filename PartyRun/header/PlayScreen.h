@@ -25,12 +25,13 @@ private:
 	ObstacleManager* obstMan;
 
 	Player* p2;
+	Player* playerobj;
 
 
 
 public:
 	PlayScreen(GameDataRef data);
-
+	void collisionUpdate(Player* playerobj);
 	void Init();
 	void HandleInput();
 	void Update(float dt);

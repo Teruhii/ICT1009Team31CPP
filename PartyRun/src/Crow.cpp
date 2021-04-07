@@ -53,7 +53,7 @@ Crow::Crow(sf::Texture* texture, sf::Vector2f spriteScaling,
 	this->crowBodyShape = new sf::RectangleShape();
 	this->crowBodyShape->setSize(hitBoxSize);
 	this->crowBodyShape->setOrigin(hitBoxSize / 2.0f);
-	this->crowBodyShape->setFillColor(sf::Color(0, 255, 0, 255));
+	this->crowBodyShape->setFillColor(sf::Color(0, 255, 0, 100));
 
 	// Create body for platform
 	this->crowBody = new Body(*(this->crowBodyShape), false, 1000.f, sf::Vector2f(0.f, 0.f), 0.f, false,

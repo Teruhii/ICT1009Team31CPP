@@ -275,6 +275,7 @@ void Player::initTexture()
 void Player::initSprite(sf::Texture* texture)
 {
 	this->sprite.setTexture(*texture);
+	this->sprite.setOrigin(30.f,50.f);
 	// Chooses how big the text is rendered and where
 	//this->currentTextureFrame = sf::IntRect(0, 0, 16, 16);
 	//this->sprite.setTextureRect(this->currentTextureFrame);
@@ -308,9 +309,9 @@ void Player::initPhysics()
 
 	// Set player body for physics
 	this->pBodyShape = new sf::RectangleShape();
-	this->pBodyShape->setSize(sf::Vector2f(50.0f, 100.0f));
+	this->pBodyShape->setSize(sf::Vector2f(60.0f/2.0f, 120.0f/2.0f));
 	this->pBodyShape->setOrigin(this->pBodyShape->getSize() / 2.0f);
-	this->pBodyShape->setFillColor(sf::Color(255, 0, 0, 255));
+	this->pBodyShape->setFillColor(sf::Color(255, 0, 0, 100));
 
 	// Create player body for physics
 	this->pBody = new Body(*(this->pBodyShape), true, 1.f, sf::Vector2f(0.f, 0.f), this->gravity, true,
