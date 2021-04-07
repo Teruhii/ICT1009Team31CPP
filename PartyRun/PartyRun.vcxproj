@@ -157,9 +157,14 @@
     <ClCompile Include="src\Body.cpp" />
     <ClCompile Include="src\Collider.cpp" />
     <ClCompile Include="src\Crow.cpp" />
+    <ClCompile Include="src\DoubleJumpCollectable.cpp" />
     <ClCompile Include="src\EndScreen.cpp" />
     <ClCompile Include="src\GameManager.cpp" />
+
     <ClCompile Include="src\hud.cpp" />
+
+    <ClCompile Include="src\InvulCollectable.cpp" />
+
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\MainScreen.cpp" />
     <ClCompile Include="src\ObstacleManager.cpp" />
@@ -167,6 +172,7 @@
     <ClCompile Include="src\PlatformManager.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\PlayScreen.cpp" />
+    <ClCompile Include="src\PowerUpManager.cpp" />
     <ClCompile Include="src\StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,19 +181,25 @@
     <ClInclude Include="header\BackgroundImage.h" />
     <ClInclude Include="header\BackgroundManager.h" />
     <ClInclude Include="header\Body.h" />
-    <ClInclude Include="header\collectable.h" />
+    <ClInclude Include="header\Collectable.h" />
     <ClInclude Include="header\Collider.h" />
     <ClInclude Include="header\Crow.h" />
     <ClInclude Include="header\Definition.h" />
+    <ClInclude Include="header\DoubleJumpCollectable.h" />
     <ClInclude Include="header\EndScreen.h" />
     <ClInclude Include="header\GameManager.h" />
+
     <ClInclude Include="header\hud.h" />
+
+    <ClInclude Include="header\InvulCollectable.h" />
+
     <ClInclude Include="header\MainScreen.h" />
     <ClInclude Include="header\ObstacleManager.h" />
     <ClInclude Include="header\Platform.h" />
     <ClInclude Include="header\PlatformManager.h" />
     <ClInclude Include="header\Player.h" />
     <ClInclude Include="header\PlayScreen.h" />
+    <ClInclude Include="header\PowerUpManager.h" />
     <ClInclude Include="header\PowerUpOne.h" />
     <ClInclude Include="header\PowerUpTwo.h" />
     <ClInclude Include="header\Screen.h" />

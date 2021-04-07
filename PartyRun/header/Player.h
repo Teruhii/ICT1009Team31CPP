@@ -2,6 +2,8 @@
 #include "../header/stdafx.h"
 #include "../header/Body.h"
 #include "../header/Animation.h"
+#include "../header/Collectable.h"
+
 
 
 	enum class PlayerState {
@@ -31,6 +33,8 @@
 		bool canFallThrough();
 		bool isInvul();
 		void setInvul(bool invulStatus);
+		void setPowerup(Collectable* powerUp);
+		bool hasPowerUp();
 
 		// --- Inputs ---
 		void processInput();
@@ -52,6 +56,8 @@
 	private:
 		PlayerState states[2];
 		int playerID;
+		Collectable* currentPowerup;
+		void usePowerup();
 
 		// FSM
 		bool canJump;

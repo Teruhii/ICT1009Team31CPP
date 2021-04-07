@@ -31,7 +31,6 @@ private:
 	float slowCrowTimer;
 	float slowCrowTimerRange[2];
 	float verticalLimitsRange[2];
-	float horizontalResetXPos;
 
 	// --- Helper function ---
 	float floatRandomInRange(float lowerBound, float upperBound);

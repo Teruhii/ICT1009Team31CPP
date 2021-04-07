@@ -7,6 +7,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	this->states[0] = PlayerState::IDLE;
 	this->states[1] = PlayerState::IDLE;
 	this->playerID = playerID;
+	this->currentPowerup = NULL;
 
 	// Instantiate FSM with Clips
 	this->initTexture();
@@ -61,6 +62,18 @@ void Player::setInvul(bool invulStatus)
 	this->invul = invulStatus;
 }
 
+void Player::setPowerup(Collectable* powerUp)
+{
+
+	this->currentPowerup = powerUp;
+
+}
+
+bool Player::hasPowerUp()
+{
+	return (this->currentPowerup != NULL) ? true : false;
+}
+
 void Player::processInput()
 {
 	// Any inputs that need to be processed should be here
@@ -98,6 +111,13 @@ void Player::handleInput()
 			this->states[1] = PlayerState::FALLING;
 
 		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F)) {
+			// Use powerup
+			if (this->currentPowerup != NULL) {
+				std::cout << "Player has powerup" << std::endl;
+				this->usePowerup();
+			}
+		}
 		else {
 			// Put idle here later
 		}
@@ -122,6 +142,13 @@ void Player::handleInput()
 			this->canFall = true;
 			this->states[1] = PlayerState::FALLING;
 
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::M)) {
+			// Use powerup
+			if (this->currentPowerup != NULL) {
+				std::cout << "Player has powerup" << std::endl;
+				this->usePowerup();
+			}
 		}
 		else {
 			// Put idle here later
@@ -253,6 +280,12 @@ bool Player::checkCollision(Collider col, float push)
 bool Player::checkCollision(Body& otherBod, float push)
 {
 	return this->pBody->checkCollision(otherBod, push);
+}
+
+void Player::usePowerup()
+{
+	this->currentPowerup->activateCollectable(this);
+	this->currentPowerup = NULL;
 }
 
 void Player::updateInvultimer(float deltaTime)

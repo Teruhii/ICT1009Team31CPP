@@ -66,7 +66,17 @@
     <ClCompile Include="src\PlatformManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+
     <ClCompile Include="src\hud.cpp">
+
+    <ClCompile Include="src\DoubleJumpCollectable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InvulCollectable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PowerUpManager.cpp">
+
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,16 +138,26 @@
     <ClInclude Include="header\PlatformManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\collectable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="header\PowerUpOne.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\PowerUpTwo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+
     <ClInclude Include="header\hud.h">
+
+    <ClInclude Include="header\Collectable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\InvulCollectable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\DoubleJumpCollectable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\PowerUpManager.h">
+
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

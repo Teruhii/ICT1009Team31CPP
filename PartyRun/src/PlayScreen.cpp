@@ -10,28 +10,35 @@ void PlayScreen::Init()
 	this->bgManager = new BackgroundManager();
 	this->shud->initHud();
 
-
+	// Load textures to asset manager
 	this->am->LoadTexture("player1", "Textures/player-penguin.png");
 	this->am->LoadTexture("player2", "Textures/player-fox.png");
-	//this->am->LoadTexture("bottom-ground", "Textures/bottom-ground.png");
-	
 	this->am->LoadTexture("bottom-ground", "Textures/bottom-ground.png");
 	this->am->LoadTexture("mid-top-plank", "Textures/mid-top-plank.png");
+	this->am->LoadTexture("crow-slow", "Textures/bird-blue.png");
+	this->am->LoadTexture("crow-fast", "Textures/bird-yellow.png");
+	this->am->LoadTexture("collectable-dj", "Textures/collectable-dj.png");
+	this->am->LoadTexture("collectable-invul", "Textures/collectable-invul.png");
+
+	
 	this->platMan = new PlatformManager(this->am->GetTexture("bottom-ground"),
 		this->am->GetTexture("mid-top-plank"), this->am->GetTexture("mid-top-plank"), this->_data);
+	this->obstMan = new ObstacleManager(this->am->GetTexture("crow-fast"),
+		this->am->GetTexture("crow-slow"), this->_data);
+	this->powMan = new PowerUpManager(this->am->GetTexture("collectable-dj"),
+		this->am->GetTexture("collectable-invul"), this->_data);
+	
+	
+	this->p1 = new Player(&(this->am->GetTexture("player1")), sf::Vector2u(3, 9), 0.3f, 1);
+	this->p2 = new Player(&(this->am->GetTexture("player2")), sf::Vector2u(3, 9), 0.3f, 2);
+	
 	/*
 	this->plat1 = new Platform(&this->am->GetTexture("plank"), 
 		sf::Vector2f((351.5625f / 1200.f), (75.f / 256.f)), sf::Vector2f(600, 198),
 		sf::Vector2f(351.5625f, 15.f), sf::Vector2f(975, 600),
 		sf::Vector2f(-20.f, 0.f), -176.f, "bottom-ground");*/
 
-	this->p1 = new Player(&(this->am->GetTexture("player1")), sf::Vector2u(3, 9), 0.3f, 1);
-	this->p2 = new Player(&(this->am->GetTexture("player2")), sf::Vector2u(3, 9), 0.3f, 2);
 
-	this->am->LoadTexture("crow-slow", "Textures/bird-blue.png");
-	this->am->LoadTexture("crow-fast", "Textures/bird-yellow.png");
-	this->obstMan = new ObstacleManager(this->am->GetTexture("crow-fast"),
-		this->am->GetTexture("crow-slow"), this->_data);
 
 	
 
@@ -74,7 +81,11 @@ void PlayScreen::Update(float dt)
 	this->bgManager->update(dt);
 	this->platMan->update(dt);
 	this->obstMan->update(dt);
+
 	this->shud->updateHud();
+
+	this->powMan->update(dt);
+
 
 	// --- Collision updates ---
 	collisionUpdate(p1);
@@ -100,6 +111,7 @@ void PlayScreen::Draw(float dt)
 	this->bgManager->render(this->_data->window);
 	this->platMan->render(this->_data->window);
 	this->obstMan->render(this->_data->window);
+	this->powMan->render(this->_data->window);
 	this->p1->render(this->_data->window);
 	this->p2->render(this->_data->window);
 	this->shud->renderHud(this->_data->window);
@@ -138,6 +150,20 @@ void PlayScreen::collisionUpdate(Player* playerobj) {
 
 			this->playerobj->move(-.1f, -.1f, 1.f);
 		}
+	}
+
+	Collectable* temp = NULL;
+	temp = this->powMan->checkPowerUpCollision(this->playerobj->getBody());
+	if (temp != NULL) {
+		std::cout << "Collided with powerup" << std::endl;
+		// Collided with powerup
+		if (!this->playerobj->hasPowerUp()) {
+			
+		std::cout << "Player does not have powerup" << std::endl;
+			this->playerobj->setPowerup(temp);
+			temp->setPowerUp();
+		}
+
 	}
 }
 

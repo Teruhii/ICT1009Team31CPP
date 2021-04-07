@@ -13,18 +13,19 @@
 #include "../header/Crow.h"
 #include "../header/ObstacleManager.h"
 #include "../header/hud.h"
+#include "../header//PowerUpManager.h"
 
 class PlayScreen : public Screen {
 private:
 
 	GameDataRef _data;
 	BackgroundManager* bgManager;
-	Player* p1;
-
 	AssetManager* am;
 	PlatformManager* platMan;
 	ObstacleManager* obstMan;
+	PowerUpManager* powMan;
 
+	Player* p1;
 	Player* p2;
 	Player* playerobj;
 	hud* shud;
