@@ -1,323 +1,319 @@
 #include "../header/Player.h"
 
-	// Constructor
-	Player::Player()
-	{
-		this->states[0] = PlayerState::IDLE;
-		this->states[1] = PlayerState::IDLE;
-		// Instantiate FSM with Clips
-		this->initTexture();
-		this->initSprite();
-		this->initAnimations();
-		this->initPhysics();
-	}
+// Constructor
+Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, int playerID) :
+	animation(texture, imageCount, switchTime)
+{
+	this->states[0] = PlayerState::IDLE;
+	this->states[1] = PlayerState::IDLE;
+	this->playerID = playerID;
 
-	// Deconstructor
-	Player::~Player()
-	{
-	}
+	// Instantiate FSM with Clips
+	this->initTexture();
+	this->initSprite(texture);
+	this->initAnimations();
+	this->initPhysics();
+}
 
-	void Player::update(float deltaTime)
-	{
-		this->processInput();
-		this->updatePhysics(deltaTime);
-		this->updateInvultimer(deltaTime);
-		//std::cout << this->pBody->getPosition().x << " Y: " << this->pBody->getPosition().y << std::endl;
+// Deconstructor
+Player::~Player()
+{
+}
 
-	}
+void Player::update(float deltaTime)
+{
+	this->processInput();
+	this->updatePhysics(deltaTime);
+	this->updateInvultimer(deltaTime);
+	this->updateAnimations(deltaTime);
+	//std::cout << this->pBody->getPosition().x << " Y: " << this->pBody->getPosition().y << std::endl;
 
-	void Player::render(sf::RenderTarget& target)
-	{
-		// FSM.playAnimation();
-		// OR
-		// weapon.playAnimation();
-		this->sprite.setPosition(this->pBody->getPosition());// move(this->velocity); // Update sprite position
-		this->updateAnimations();
-		target.draw(*this->pBodyShape);
-		target.draw(this->sprite);
-	}
+}
 
-	void Player::resetJump()
-	{
-		this->canJump = true;
-	}
+void Player::render(sf::RenderTarget& target)
+{
+	// FSM.playAnimation();
+	// OR
+	// weapon.playAnimation();
+	this->sprite.setPosition(this->pBody->getPosition());// move(this->velocity); // Update sprite position
 
-	bool Player::canFallThrough()
-	{
-		return this->canFall;
-	}
+	target.draw(this->sprite);
+	target.draw(*this->pBodyShape);
+}
 
-	bool Player::isInvul()
-	{
-		return this->invul;
-	}
+void Player::resetJump()
+{
+	this->canJump = true;
+}
 
-	void Player::setInvul(bool invulStatus)
-	{
-		this->invul = invulStatus;
-	}
+bool Player::canFallThrough()
+{
+	return this->canFall;
+}
 
-	void Player::processInput()
-	{
-		// Any inputs that need to be processed should be here
-		
-	}
+bool Player::isInvul()
+{
+	return this->invul;
+}
 
-	void Player::handleInput(int x)
-	{
-		// Keyboard input handling to update various info
-		this->states[0] = PlayerState::IDLE; // Reset to Idle
-		this->states[1] = PlayerState::IDLE; // Reset to Idle
-		this->canFall = false;
+void Player::setInvul(bool invulStatus)
+{
+	this->invul = invulStatus;
+}
 
-		switch (x) {
-			case 1:
-				// Process variable changes to update player physics
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
+void Player::processInput()
+{
+	// Any inputs that need to be processed should be here
+
+}
+
+void Player::handleInput()
+{
+	// Keyboard input handling to update various info
+	this->states[0] = PlayerState::IDLE; // Reset to Idle
+	this->states[1] = PlayerState::IDLE; // Reset to Idle
+	this->canFall = false;
+
+	switch (this->playerID) {
+	case 1:
+		// Process variable changes to update player physics
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
 			this->states[0] = PlayerState::RUNNING_LEFT;
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
 			this->states[0] = PlayerState::RUNNING_RIGHT;
-				}
+		}
 
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
 			if (this->canJump) {
 				//this->jump(0.f, -1.f);
 				this->pBody->addForce(0.f, -this->jumpForce);
 				this->states[1] = PlayerState::JUMPING;
 				this->canJump = false;
 			}
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
 			//this->move(0.f, 1.f);
 			this->canFall = true;
 			this->states[1] = PlayerState::FALLING;
 
-				}
-				else {
-					// Put idle here later
-				}
-				break;
-			case 2:
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
+		}
+		else {
+			// Put idle here later
+		}
+		break;
+	case 2:
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
 			this->states[0] = PlayerState::RUNNING_LEFT;
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
-					this->states[0] = PlayerState::RUNNING_RIGHT;
-				}
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
+			this->states[0] = PlayerState::RUNNING_RIGHT;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
 			if (this->canJump) {
 				//this->jump(0.f, -1.f);
 				this->pBody->addForce(0.f, -this->jumpForce);
 				this->states[1] = PlayerState::JUMPING;
 				this->canJump = false;
 			}
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
 			//this->move(0.f, 1.f);
 			this->canFall = true;
 			this->states[1] = PlayerState::FALLING;
 
-				}
-				else {
-					// Put idle here later
-				}
-				break;
-
 		}
+		else {
+			// Put idle here later
+		}
+		break;
+
 	}
+}
 
-	void Player::updateAnimations()
-	{
-		
-		if (this->states[0] == PlayerState::IDLE) {
+void Player::updateAnimations(float deltaTime)
+{
 
-			if (this->animationTimer.getElapsedTime().asSeconds() >= 0.2f) {// Need to abstract later -----------------------
-				this->currentTextureFrame.top = 0;
-				this->currentTextureFrame.left = 0;
-				 /*for looping of animation only
-				// Loop running
-				if (this->currentTextureFrame.top >= 64) {
-					this->currentTextureFrame.top = 16;
-				}*/
+	if (this->states[1] == PlayerState::JUMPING) {
 
-				// Reset timer
-				this->animationTimer.restart(); // Need to abstract later -----------------------
-				this->sprite.setTextureRect(this->currentTextureFrame);
-			}
-		}
-		else if (this->states[0] == PlayerState::RUNNING_LEFT)
+		this->spriteRow = 2;
+		if (this->states[0] == PlayerState::RUNNING_LEFT)
 		{
-			// Timer per animation to abstract later ------------------------------------------------
-			if (this->animationTimer.getElapsedTime().asSeconds() >= 0.2f) {
-				this->currentTextureFrame.top += 16;
-				this->currentTextureFrame.left = 32;
+			this->facingRight = false;
 
-				// Loop running
-				if (this->currentTextureFrame.top >= 64) {
-					this->currentTextureFrame.top = 16;
-				}
-
-				// Reset timer
-				this->animationTimer.restart();// Need to abstract later -----------------------
-				this->sprite.setTextureRect(this->currentTextureFrame);
-			}
 		}
 		else if (this->states[0] == PlayerState::RUNNING_RIGHT)
 		{
-			if (this->animationTimer.getElapsedTime().asSeconds() >= 0.2f) {// Need to abstract later -----------------------
-				// Change this
-				this->currentTextureFrame.top += 16;
-				this->currentTextureFrame.left = 32;
-
-				// Loop jumping animation
-				if (this->currentTextureFrame.top >= 64) {
-					this->currentTextureFrame.top = 16;
-				}
-
-				// Reset timer
-				this->animationTimer.restart();// Need to abstract later -----------------------
-				this->sprite.setTextureRect(this->currentTextureFrame);
-			}
+			this->facingRight = true;
 		}
-		else
+		this->sprite.setTextureRect(this->animation.uvRect);
+	}
+	else if (this->states[1] == PlayerState::IDLE) {
+
+		this->spriteRow = 0;
+		if (this->states[0] == PlayerState::RUNNING_LEFT)
 		{
-			// For transitioning between states
-			// Reset timer
-			this->animationTimer.restart();
+			this->spriteRow = 1;
+			this->facingRight = false;
+
 		}
-
-		
-
-	}
-
-	void Player::move(const float dir_x, const float dir_y, float deltaTime)
-	{
-		// Apply acceleration
-		sf::Vector2f vectorToApply;
-		vectorToApply.x = dir_x * this->horizontalMovementSpeed * (deltaTime / 1);
-		vectorToApply.y = dir_y * this->verticalMovementSpeed * (deltaTime / 1);
-		
-		this->pBody->moveBody(vectorToApply);
-	}
-
-	void Player::jump(const float dir_x, const float dir_y)
-	{
-		// Apply acceleration
-		this->velocity.y += dir_y * this->jumpForce;
-
-		/*// Limit velocity
-		if (std::abs(this->velocity.y) > this->maxVelocityY) { // Vertical limiting
-			// To keep direction
-			// If velocity.y is < 0, maxVelocityY * -1
-			this->velocity.y = this->maxVelocityY * ((this->velocity.x < 0.f) ? -1.f : 1.f);
-		}*/
-	}
-
-	void Player::updatePhysics(float deltaTime)
-	{//remove for now
-	 /*
-		// Gravity application
-		this->velocity.y += 1.0 * this->gravity;
-		// For Terminal velocity
-		if (std::abs(this->velocity.y) > this->maxVelocityY) {
-			this->velocity.y = this->maxVelocityY * ((this->velocity.y < 0.f) ? -1.f : 1.f);
-		}*/
-		/*
-		// Decelerate
-		this->velocity *= this->drag;
-
-		// Stop excess Deceleration
-		if (std::abs(this->velocity.x) < this->minVelocity) { // For left & right
-			this->velocity.x = 0;
+		else if (this->states[0] == PlayerState::RUNNING_RIGHT)
+		{
+			this->spriteRow = 1;
+			this->facingRight = true;
 		}
-		if (std::abs(this->velocity.y) < this->minVelocity) { // For up and down
-			this->velocity.y = 0;
-		}*/
+		this->sprite.setTextureRect(this->animation.uvRect);
+	}
+	else if (this->states[1] == PlayerState::FALLING) {
 
-		if (this->states[0] == PlayerState::RUNNING_LEFT) {
-			this->move(-1.f, 0.f, deltaTime);
+		this->spriteRow = 7;
+		if (this->states[0] == PlayerState::RUNNING_LEFT)
+		{
+			this->facingRight = false;
+
 		}
-		else if (this->states[0] == PlayerState::RUNNING_RIGHT) {
-			this->move(1.f, 0.f, deltaTime);
+		else if (this->states[0] == PlayerState::RUNNING_RIGHT)
+		{
+			this->facingRight = true;
 		}
-
-		this->pBody->update(deltaTime);
-		//std::cout << this->pBody->getPosition().x << " Y: " << this->pBody->getPosition().y << std::endl;
+		this->sprite.setTextureRect(this->animation.uvRect);
 	}
 
-	Body& Player::getBody()
-	{
-		return *(this->pBody);
+
+	this->animation.Update(this->spriteRow, deltaTime, this->facingRight);
+
+
+}
+
+void Player::move(const float dir_x, const float dir_y, float deltaTime)
+{
+	// Apply acceleration
+	sf::Vector2f vectorToApply;
+	vectorToApply.x = dir_x * this->horizontalMovementSpeed * (deltaTime / 1);
+	vectorToApply.y = dir_y * this->verticalMovementSpeed * (deltaTime / 1);
+
+	this->pBody->moveBody(vectorToApply);
+}
+
+void Player::jump(const float dir_x, const float dir_y)
+{
+	// Apply acceleration
+	this->velocity.y += dir_y * this->jumpForce;
+
+	/*// Limit velocity
+	if (std::abs(this->velocity.y) > this->maxVelocityY) { // Vertical limiting
+		// To keep direction
+		// If velocity.y is < 0, maxVelocityY * -1
+		this->velocity.y = this->maxVelocityY * ((this->velocity.x < 0.f) ? -1.f : 1.f);
+	}*/
+}
+
+void Player::updatePhysics(float deltaTime)
+{//remove for now
+ /*
+	// Gravity application
+	this->velocity.y += 1.0 * this->gravity;
+	// For Terminal velocity
+	if (std::abs(this->velocity.y) > this->maxVelocityY) {
+		this->velocity.y = this->maxVelocityY * ((this->velocity.y < 0.f) ? -1.f : 1.f);
+	}*/
+	/*
+	// Decelerate
+	this->velocity *= this->drag;
+
+	// Stop excess Deceleration
+	if (std::abs(this->velocity.x) < this->minVelocity) { // For left & right
+		this->velocity.x = 0;
+	}
+	if (std::abs(this->velocity.y) < this->minVelocity) { // For up and down
+		this->velocity.y = 0;
+	}*/
+
+	if (this->states[0] == PlayerState::RUNNING_LEFT) {
+		this->move(-1.f, 0.f, deltaTime);
+	}
+	else if (this->states[0] == PlayerState::RUNNING_RIGHT) {
+		this->move(1.f, 0.f, deltaTime);
 	}
 
-	bool Player::checkCollision(Collider col, float push)
-	{
-		return this->pBody->checkCollision(col, push);
-	}
+	this->pBody->update(deltaTime);
+	//std::cout << this->pBody->getPosition().x << " Y: " << this->pBody->getPosition().y << std::endl;
+}
 
-	bool Player::checkCollision(Body& otherBod, float push)
-	{
-		return this->pBody->checkCollision(otherBod, push);
-	}
+Body& Player::getBody()
+{
+	return *(this->pBody);
+}
 
-	void Player::updateInvultimer(float deltaTime)
-	{
-		this->invulTimer += deltaTime;
-		if (this->invulTimer > this->invulDuration) {
-			// Reset invul timer
-			this->invulTimer = 0.f;
-			this->invul = false;
-		}
-	}
+bool Player::checkCollision(Collider col, float push)
+{
+	return this->pBody->checkCollision(col, push);
+}
 
-	void Player::initTexture()
-	{
-		if (!this->textureSheet.loadFromFile("Textures/entity.png")) {
-			std::cout << "Couldn't load the player's sheet. 'entity.png'.";
-		}
-	}
+bool Player::checkCollision(Body& otherBod, float push)
+{
+	return this->pBody->checkCollision(otherBod, push);
+}
 
-	void Player::initSprite()
-	{
-		this->sprite.setTexture(this->textureSheet);
-		// Chooses how big the text is rendered and where
-		this->currentTextureFrame = sf::IntRect(0, 0, 16, 16);
-		this->sprite.setTextureRect(this->currentTextureFrame);
-		this->sprite.setScale(2.5f, 2.5f);
-	}
-
-	void Player::initAnimations()
-	{
-		this->animationTimer.restart();
-	}
-
-	void Player::initPhysics()
-	{
-		// Set player physics variables
-		this->maxVelocity = 800.f;
-		this->horizontalMovementSpeed = 600.f;
-		this->verticalMovementSpeed = 600.f;
-		this->drag = .90f;
-		this->minVelocity = 1.f; // threshold to stop moving
-		this->gravity = 40.f;
-		this->maxVelocityY = 8000.f; // Terminal Velocity
-		this->jumpForce = 2500.f;
-		this->initialPosition = new sf::Vector2f(10.f, 10.f);
-		this->canFall = false;
-		this->canJump = true;
+void Player::updateInvultimer(float deltaTime)
+{
+	this->invulTimer += deltaTime;
+	if (this->invulTimer > this->invulDuration) {
+		// Reset invul timer
 		this->invulTimer = 0.f;
-		this->invulDuration = 3.f;
 		this->invul = false;
-
-		// Set player body for physics
-		this->pBodyShape = new sf::RectangleShape();
-		this->pBodyShape->setSize(sf::Vector2f(50.0f, 100.0f));
-		this->pBodyShape->setOrigin(this->pBodyShape->getSize() / 2.0f);
-		this->pBodyShape->setFillColor(sf::Color(255,0,0,255));
-
-		// Create player body for physics
-		this->pBody = new Body(*(this->pBodyShape), true, 1.f, sf::Vector2f(0.f, 0.f), this->gravity, true, 
-			this->maxVelocityY, this->drag, this->minVelocity, this->maxVelocity, "player");
-		//this->pBody->setPosition(*initialPosition);
 	}
+}
+
+void Player::initTexture()
+{
+	if (!this->textureSheet.loadFromFile("Textures/entity.png")) {
+		std::cout << "Couldn't load the player's sheet. 'entity.png'.";
+	}
+}
+
+void Player::initSprite(sf::Texture* texture)
+{
+	this->sprite.setTexture(*texture);
+	// Chooses how big the text is rendered and where
+	//this->currentTextureFrame = sf::IntRect(0, 0, 16, 16);
+	//this->sprite.setTextureRect(this->currentTextureFrame);
+	//this->sprite.setScale(2.5f, 2.5f);
+}
+
+void Player::initAnimations()
+{
+	this->animationTimer.restart();
+	this->facingRight = true;
+	this->spriteRow = 0;
+}
+
+void Player::initPhysics()
+{
+	// Set player physics variables
+	this->maxVelocity = 800.f;
+	this->horizontalMovementSpeed = 600.f;
+	this->verticalMovementSpeed = 600.f;
+	this->drag = .90f;
+	this->minVelocity = 1.f; // threshold to stop moving
+	this->gravity = 40.f;
+	this->maxVelocityY = 8000.f; // Terminal Velocity
+	this->jumpForce = 2500.f;
+	this->initialPosition = new sf::Vector2f(10.f, 10.f);
+	this->canFall = false;
+	this->canJump = true;
+	this->invulTimer = 0.f;
+	this->invulDuration = 3.f;
+	this->invul = false;
+
+	// Set player body for physics
+	this->pBodyShape = new sf::RectangleShape();
+	this->pBodyShape->setSize(sf::Vector2f(50.0f, 100.0f));
+	this->pBodyShape->setOrigin(this->pBodyShape->getSize() / 2.0f);
+	this->pBodyShape->setFillColor(sf::Color(255, 0, 0, 255));
+
+	// Create player body for physics
+	this->pBody = new Body(*(this->pBodyShape), true, 1.f, sf::Vector2f(0.f, 0.f), this->gravity, true,
+		this->maxVelocityY, this->drag, this->minVelocity, this->maxVelocity, "player");
+	//this->pBody->setPosition(*initialPosition);
+}

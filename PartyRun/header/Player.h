@@ -1,6 +1,7 @@
 #pragma once
 #include "../header/stdafx.h"
 #include "../header/Body.h"
+#include "../header/Animation.h"
 
 
 	enum class PlayerState {
@@ -21,7 +22,7 @@
 
 	public:
 		// --- Constructors ---
-		Player();
+		Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, int playerID);
 		~Player();
 		void render(sf::RenderTarget& target);
 
@@ -33,16 +34,16 @@
 
 		// --- Inputs ---
 		void processInput();
-		void handleInput(int);
+		void handleInput();
     
     // --- Animations ---
-		void updateAnimations();
+		void updateAnimations(float deltaTime);
 
 		// --- Physics ---
 		void move(const float, const float, float);
 		void jump(const float dir_x, const float dir_y);
-		void update(float);
-		void updatePhysics(float);
+		void update(float deltaTime);
+		void updatePhysics(float deltaTime);
 		Body& getBody();
 		bool checkCollision(Collider, float);
 		bool checkCollision(Body& otherBod, float push);
@@ -50,7 +51,7 @@
 
 	private:
 		PlayerState states[2];
-		int x;
+		int playerID;
 
 		// FSM
 		bool canJump;
@@ -65,8 +66,11 @@
 		sf::Texture textureSheet;
 		sf::IntRect currentTextureFrame;
 		sf::Clock animationTimer;
+		Animation animation;
+		int spriteRow;
+		bool facingRight;
 		void initTexture();
-		void initSprite();
+		void initSprite(sf::Texture* texture);
 		void initAnimations();
 		// --- Animation Clips end ---
 

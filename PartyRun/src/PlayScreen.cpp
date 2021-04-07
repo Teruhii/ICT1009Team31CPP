@@ -7,10 +7,12 @@ void PlayScreen::Init()
 	//initialise this stuff needed to render things into this playscreen
 
 	this->am = new AssetManager();
-	this->p1 = new Player();
-	this->p2 = new Player();
 	this->bgManager = new BackgroundManager();
-	
+
+
+	this->am->LoadTexture("player1", "Textures/player-penguin.png");
+	this->am->LoadTexture("player2", "Textures/player-fox.png");
+	//this->am->LoadTexture("bottom-ground", "Textures/bottom-ground.png");
 	
 	this->am->LoadTexture("bottom-ground", "Textures/bottom-ground.png");
 	this->am->LoadTexture("mid-top-plank", "Textures/mid-top-plank.png");
@@ -22,6 +24,8 @@ void PlayScreen::Init()
 		sf::Vector2f(351.5625f, 15.f), sf::Vector2f(975, 600),
 		sf::Vector2f(-20.f, 0.f), -176.f, "bottom-ground");*/
 
+	this->p1 = new Player(&(this->am->GetTexture("player1")), sf::Vector2u(3, 9), 0.3f, 1);
+	this->p2 = new Player(&(this->am->GetTexture("player2")), sf::Vector2u(3, 9), 0.3f, 2);
 
 	this->am->LoadTexture("crow-slow", "Textures/bird-blue.png");
 	this->am->LoadTexture("crow-fast", "Textures/bird-yellow.png");
@@ -53,8 +57,8 @@ void PlayScreen::HandleInput()
 			}
 		}
 
-		this->p1->handleInput(1);
-		this->p2->handleInput(2);
+		this->p1->handleInput();
+		this->p2->handleInput();
 	}
 
 }
