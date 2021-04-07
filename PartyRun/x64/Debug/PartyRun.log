@@ -1,111 +1,69 @@
-﻿  Animation.cpp
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Animation.cpp(10,38): warning C4244: '=': conversion from 'float' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Animation.cpp(11,39): warning C4244: '=': conversion from 'float' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-  AssetManager.cpp
-  BackgroundImage.cpp
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\BackgroundImage.cpp(34,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\BackgroundImage.cpp(34,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\BackgroundImage.cpp(48,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  BackgroundManager.cpp
-  Body.cpp
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Body.cpp(97,50): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+﻿  Crow.cpp
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Crow.cpp(7,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Crow.cpp(8,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Crow.cpp(11,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Crow.cpp(45,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-  Collider.cpp
-  Crow.cpp
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Crow.cpp(7,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Crow.cpp(8,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Crow.cpp(11,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Crow.cpp(45,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Crow.cpp(46,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Crow.cpp(46,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Crow.cpp(49,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Crow.cpp(112,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Crow.cpp(112,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Crow.cpp(49,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Crow.cpp(112,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Crow.cpp(112,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   DoubleJumpCollectable.cpp
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(14,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(14,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(15,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(15,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(18,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(65,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(65,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(106,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(106,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  EndScreen.cpp
-  GameManager.cpp
-  hud.cpp
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(18,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(65,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(65,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(106,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\DoubleJumpCollectable.cpp(106,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   InvulCollectable.cpp
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(14,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(14,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(15,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(15,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(18,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(65,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(65,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(106,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(106,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Main.cpp
-  MainScreen.cpp
-  ObstacleManager.cpp
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(18,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(65,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(65,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(106,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\InvulCollectable.cpp(106,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Platform.cpp
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Platform.cpp(6,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Platform.cpp(7,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Platform.cpp(10,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Platform.cpp(42,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Platform.cpp(6,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Platform.cpp(7,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Platform.cpp(10,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Platform.cpp(42,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Platform.cpp(43,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Platform.cpp(43,33): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Platform.cpp(46,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Platform.cpp(102,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\Platform.cpp(102,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  PlatformManager.cpp
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\PlatformManager.cpp(65,30): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\PlatformManager.cpp(65,30): warning C4154: deletion of an array expression; conversion to pointer supplied
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\PlatformManager.cpp(66,30): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\PlatformManager.cpp(66,30): warning C4154: deletion of an array expression; conversion to pointer supplied
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\PlatformManager.cpp(67,27): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
-D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\src\PlatformManager.cpp(67,27): warning C4154: deletion of an array expression; conversion to pointer supplied
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Platform.cpp(46,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Platform.cpp(102,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SiTProjects\ICT1009Team31CPP\PartyRun\src\Platform.cpp(102,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Player.cpp
-  PlayScreen.cpp
-  PowerUpManager.cpp
   Generating Code...
-  Compiling...
-  StateMachine.cpp
-  Generating Code...
-  PartyRun.vcxproj -> D:\SIT\ICT_1009_Object_Oriented_Programming\Assignment2\Project\ICT1009Team31CPP\PartyRun\x64\Debug\PartyRun.exe
+  PartyRun.vcxproj -> D:\SiTProjects\ICT1009Team31CPP\PartyRun\x64\Debug\PartyRun.exe

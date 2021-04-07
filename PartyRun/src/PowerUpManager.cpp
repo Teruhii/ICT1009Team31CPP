@@ -16,7 +16,7 @@ PowerUpManager::PowerUpManager(GameDataRef data) : _data(data)
 		sf::Texture temp;
 		temp.loadFromFile("Textures/collectable-dj.png");
 		collectables[i] = new DoubleJumpCollectable(&temp,
-			sf::Vector2f(1.f / 2.f, 1.f / 2.0f), sf::Vector2f(100.f, 120.f),
+			sf::Vector2f(1.f / 10.f, 1.f / 10.0f), sf::Vector2f(100.f, 120.f),
 			sf::Vector2f(50.f, 50.f), sf::Vector2f(1000.f, 0.f),
 			sf::Vector2f(-250.f, 0.f), (-175.f), "collectible-double");
 		collectables[i]->setPosition(sf::Vector2f(1000.f, 0.f));
@@ -54,7 +54,7 @@ PowerUpManager::PowerUpManager(sf::Texture doubleJumpTexture,
 		else if (this->numOfDoubleJumps < minDoubleJumpCount) {
 			// Spawn double jump
 			collectables[i] = new DoubleJumpCollectable(&doubleJumpTexture,
-				sf::Vector2f(1.f / 2.f, 1.f / 2.0f), sf::Vector2f(100.f, 120.f),
+				sf::Vector2f(1.f / 50.f, 1.f / 50.0f), sf::Vector2f(100.f, 120.f),
 				sf::Vector2f(50.f, 50.f), sf::Vector2f(1000.f, 0.f),
 				sf::Vector2f(-250.f, 0.f), (-175.f), "collectible-double");
 			collectables[i]->setPosition(sf::Vector2f(1000.f, 0.f));
@@ -64,7 +64,7 @@ PowerUpManager::PowerUpManager(sf::Texture doubleJumpTexture,
 			if (this->floatRandomInRange(0, 100) < 50) {
 				// Spawn invul
 				collectables[i] = new DoubleJumpCollectable(&invulTexture,
-					sf::Vector2f(1.f / 2.f, 1.f / 2.0f), sf::Vector2f(100.f, 120.f),
+					sf::Vector2f(1.f / 3.f, 1.f / 3.0f), sf::Vector2f(100.f, 120.f),
 					sf::Vector2f(50.f, 50.f), sf::Vector2f(1000.f, 0.f),
 					sf::Vector2f(-250.f, 0.f), (-175.f), "collectible-invul");
 				collectables[i]->setPosition(sf::Vector2f(1000.f, 0.f));
@@ -73,7 +73,7 @@ PowerUpManager::PowerUpManager(sf::Texture doubleJumpTexture,
 			{
 				// Spawn double jump
 				collectables[i] = new DoubleJumpCollectable(&doubleJumpTexture,
-					sf::Vector2f(1.f / 2.f, 1.f / 2.0f), sf::Vector2f(100.f, 120.f),
+					sf::Vector2f(1.f / 5.f, 1.f / 5.0f), sf::Vector2f(230.f, 280.f),
 					sf::Vector2f(50.f, 50.f), sf::Vector2f(1000.f, 0.f),
 					sf::Vector2f(-250.f, 0.f), (-175.f), "collectible-double");
 				collectables[i]->setPosition(sf::Vector2f(1000.f, 0.f));

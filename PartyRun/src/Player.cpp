@@ -39,7 +39,7 @@ void Player::render(sf::RenderTarget& target)
 	this->sprite.setPosition(this->pBody->getPosition());// move(this->velocity); // Update sprite position
 
 	target.draw(this->sprite);
-	target.draw(*this->pBodyShape);
+	//target.draw(*this->pBodyShape);
 }
 
 void Player::resetJump()

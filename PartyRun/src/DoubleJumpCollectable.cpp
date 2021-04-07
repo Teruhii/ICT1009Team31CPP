@@ -92,7 +92,7 @@ void DoubleJumpCollectable::render(sf::RenderTarget& target)
 	this->dJColSprite.setPosition(this->dJColBody->getPosition());
 
 	target.draw(this->dJColSprite);
-	target.draw(*this->dJColBodyShape);
+	//target.draw(*this->dJColBodyShape);
 }
 
 void DoubleJumpCollectable::update(float deltaTime)

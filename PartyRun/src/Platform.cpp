@@ -117,5 +117,5 @@ void Platform::render(sf::RenderTarget& target)
 	this->platformSprite.setPosition(this->platBody->getPosition());
 
 	target.draw(this->platformSprite);
-	target.draw(*this->platBodyShape);
+	//target.draw(*this->platBodyShape);
 }

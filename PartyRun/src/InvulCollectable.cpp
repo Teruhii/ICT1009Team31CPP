@@ -92,7 +92,7 @@ void InvulCollectable::render(sf::RenderTarget& target)
 	this->invulSprite.setPosition(this->invulBody->getPosition());
 
 	target.draw(this->invulSprite);
-	target.draw(*this->invulBodyShape);
+	//target.draw(*this->invulBodyShape);
 }
 
 void InvulCollectable::update(float deltaTime)

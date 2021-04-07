@@ -98,7 +98,7 @@ void Crow::render(sf::RenderTarget& target)
 {
 	this->crowSprite.setPosition(this->crowBody->getPosition());
 	target.draw(this->crowSprite);
-	target.draw(*this->crowBodyShape);
+	//target.draw(*this->crowBodyShape);
 }
 
 void Crow::update(float deltaTime)
