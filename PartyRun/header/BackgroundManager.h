@@ -13,7 +13,6 @@ public:
 
 private:
 	
-
 	// Background images needed
 	BackgroundImage* bgLayer1[2];
 	BackgroundImage* bgLayer2[2];

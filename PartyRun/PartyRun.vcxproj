@@ -159,6 +159,7 @@
     <ClCompile Include="src\Crow.cpp" />
     <ClCompile Include="src\EndScreen.cpp" />
     <ClCompile Include="src\GameManager.cpp" />
+    <ClCompile Include="src\hud.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\MainScreen.cpp" />
     <ClCompile Include="src\ObstacleManager.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="header\Definition.h" />
     <ClInclude Include="header\EndScreen.h" />
     <ClInclude Include="header\GameManager.h" />
+    <ClInclude Include="header\hud.h" />
     <ClInclude Include="header\MainScreen.h" />
     <ClInclude Include="header\ObstacleManager.h" />
     <ClInclude Include="header\Platform.h" />

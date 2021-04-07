@@ -12,6 +12,7 @@
 #include "../header/PlatformManager.h"
 #include "../header/Crow.h"
 #include "../header/ObstacleManager.h"
+#include "../header/hud.h"
 
 class PlayScreen : public Screen {
 private:
@@ -26,6 +27,8 @@ private:
 
 	Player* p2;
 	Player* playerobj;
+	hud* shud;
+
 
 
 

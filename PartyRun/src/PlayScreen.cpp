@@ -5,9 +5,10 @@ PlayScreen::PlayScreen(GameDataRef data) : _data(data) {}
 void PlayScreen::Init()
 {
 	//initialise this stuff needed to render things into this playscreen
-
+	this->shud = new hud();
 	this->am = new AssetManager();
 	this->bgManager = new BackgroundManager();
+	this->shud->initHud();
 
 
 	this->am->LoadTexture("player1", "Textures/player-penguin.png");
@@ -31,6 +32,8 @@ void PlayScreen::Init()
 	this->am->LoadTexture("crow-fast", "Textures/bird-yellow.png");
 	this->obstMan = new ObstacleManager(this->am->GetTexture("crow-fast"),
 		this->am->GetTexture("crow-slow"), this->_data);
+
+	
 
 
 }
@@ -71,6 +74,7 @@ void PlayScreen::Update(float dt)
 	this->bgManager->update(dt);
 	this->platMan->update(dt);
 	this->obstMan->update(dt);
+	this->shud->updateHud();
 
 	// --- Collision updates ---
 	collisionUpdate(p1);
@@ -97,8 +101,8 @@ void PlayScreen::Draw(float dt)
 	this->platMan->render(this->_data->window);
 	this->obstMan->render(this->_data->window);
 	this->p1->render(this->_data->window);
-
 	this->p2->render(this->_data->window);
+	this->shud->renderHud(this->_data->window);
 
 
 	this->_data->window.display();
